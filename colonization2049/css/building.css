@@ -1,0 +1,49 @@
+#drag {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 50;
+}
+.shop {
+    position: absolute;
+    top: 5px; left: 5px;
+}
+.shopItem, .shopHeader {
+    background-color: brown;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    gap: 25px;
+    line-height: 200%;
+}
+.shopItem:hover {
+    filter: brightness(120%);
+    cursor: pointer;
+}
+.shopHeader {
+    padding: 0;
+    justify-content: right;
+    padding-right: 14px;
+    line-height: 25px;
+}
+.Base, .OxygenStation, .FarmStation, .MineStation {
+    --star-color: white;
+    height: 35px;
+    width: 35px;
+    background-color: rgb(231, 93, 25);
+    border-radius: 50%;
+    z-index: 5;
+    box-shadow: 0px 0px 18px -2px rgba(0,0,0,1);
+    transform: translate(-50%,-50%);
+    position: absolute;
+}
+.svg {
+    height: 27px !important;
+    width: 27px !important;
+    filter: brightness(300%);
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+}

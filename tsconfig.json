@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "rootDir": "./colonization2049/scripts/src",
+        "outDir": "./colonization2049/scripts/dist",
+        "target": "ES2015",
+        "noImplicitAny": true,
+    }
+}

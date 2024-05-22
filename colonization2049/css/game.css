@@ -1,0 +1,36 @@
+@import url('building.css');
+@font-face {
+    font-family: future-mood;
+    src: url('../fonts/future_mood.ttf');
+}
+* {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #111;
+    height: 100vh;
+    font-family: future-mood;
+    color: white;
+}
+.map {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+}
+.map img {
+    width: 850px;
+    height: 850px;
+}
+.placePoint {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    background-color: #111;
+    border-radius: 50%;
+    opacity: 70%;
+    box-shadow: 0 0 5px 5px rgb(171, 52, 52);
+}

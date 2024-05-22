@@ -1,0 +1,55 @@
+@font-face {
+    font-family: future-mood;
+    src: url('../fonts/future_mood.ttf');
+}
+.menu {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    display: flex;
+    flex-direction: column;
+}
+.menu button {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    background-color: rgba(33,33,33,0.5);
+    border: 3px solid black;
+    width: 400px;
+    padding: 20px 0;
+    margin-bottom: 15px;
+    font-family: future-mood;
+    font-variant: small-caps;
+    letter-spacing: 3px;
+    transition: background-color 0.18s;
+}
+.menu button:hover {
+    cursor: pointer;
+    background-color: rgba(22,22,22,0.5);
+}
+.background {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%; width: 100%;
+    background-color: black;
+    background-image: url('../img/1.png');
+    transition: background-image 2s;
+    animation: move infinite linear 20s;
+    animation-direction: alternate;
+}
+@keyframes move {
+    from {
+        transform: scale(1.1) translate(40px, 40px);
+    } to {
+        transform: scale(1.1) translate(-40px, -40px);
+    }
+}
+.title {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translateX(-50%);
+    font-size: 8rem;
+    letter-spacing: 5px;
+    font-family: future-mood;
+}

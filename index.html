@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colonization 2049</title>
+    <meta name="author" content="Szymon Gniadek">
+
+    <link rel="stylesheet" href="colonization2049/css/main.css">
+    <link rel="stylesheet" href="colonization2049/css/menu.css">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="title">Colonization 2049</div>
+    <div class="menu">
+        <button>Play</button>
+        <button>Options</button>
+        <button>Credits</button>
+        <button>Quit</button>
+    </div>
+    <script>
+        window.addEventListener("load",() => {
+            const background = document.querySelector(".background");
+            const images = ['img/1.png','img/2.png','img/3.png'];
+            let i = 0;
+            setInterval(() => {
+                i++;
+                if(i >= images.length) i = 0;
+                background.style.backgroundImage = `url(${images[i]})`;
+            },20000)
+        });
+    </script>
+    <script src="scripts/soundManager.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "colonization-2049",
+  "version": "1.0.0",
+  "description": "this is a game",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc.cmd"
+  },
+  "keywords": [
+    "game",
+    "mars",
+    "board",
+    "game"
+  ],
+  "author": "Szymon Gniadek",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.2.2"
+  }
+}
