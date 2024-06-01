@@ -12,7 +12,7 @@ function generateCircleOfPoints(diameter: number, count: number, shift: number =
         const x: number = radius + radius * Math.sin(angle);
         const y: number = radius + radius * Math.cos(angle);
 
-        arr.push(new PlacePoint(x + shift,y + shift, i + iteration * 24));   
+        arr.push(new PlacePoint(x + shift,y + shift, i + iteration * ROW_LENGTH));   
     }
 
     pointsMap.push(arr);
@@ -21,5 +21,5 @@ function generateCircleOfPoints(diameter: number, count: number, shift: number =
 let change: number = 150;
 for(let i=0; i<5; i++) 
 {
-    generateCircleOfPoints(850 - change * i, 24, change * i / 2, i);
+    generateCircleOfPoints(850 - change * i, ROW_LENGTH, change * i / 2, i);
 }

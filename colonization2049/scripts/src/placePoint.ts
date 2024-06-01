@@ -1,5 +1,6 @@
 class PlacePoint {
     id: string;
+    idNumber: number;
     div: HTMLElement;
     x: number;
     y: number;
@@ -8,6 +9,7 @@ class PlacePoint {
     building: Building;
     constructor(x: number, y: number, id: number) {
         this.id  = 'placePoint'+id;
+        this.idNumber = id;
         this.setPoint(x,y);
         this.x = x;
         this.y = y;
@@ -20,7 +22,7 @@ class PlacePoint {
             if((draggedElX >= this.x-15 && draggedElX <= this.x+15) && 
               (draggedElY >= this.y-15 && draggedElY <= this.y+15)) 
                 {
-                    this.setBuilding(whatIsDragging);
+                    this.setBuilding(whatIsDragging.name);
                 }
             
         });
@@ -37,11 +39,29 @@ class PlacePoint {
         map.appendChild(point);
     }
 
-    setBuilding(buildingName: string) 
+    setBuilding(buildingName: string, force: boolean = false) 
     {
-        document.getElementById(this.id).classList.replace('placePoint', buildingName);
-        document.getElementById(this.id).innerHTML = `<img src="colonization2049/img/${buildingName}.svg" class="svg">`;
-        this.building = eval(`new ${buildingName}()`);
-        activePlayer.buildings.push(eval(`new ${buildingName}()`));
+        const building: Building = eval(`new ${buildingName}()`);
+        if(force == true || building.conditionToBuild(this.getRow(), this.getIndex()))
+        {
+            document.getElementById(this.id).classList.replace('placePoint', buildingName);
+            document.getElementById(this.id).innerHTML = `<img src="colonization2049/img/${buildingName}.svg" class="svg">`;
+            this.building = eval(`new ${buildingName}()`);
+            activePlayer.buildings.push(eval(`new ${buildingName}()`));
+        }
     }
+
+    getRow(): number {
+        return Math.floor(this.idNumber / ROW_LENGTH);
+    }
+
+    getIndex(): number {
+        return this.idNumber - this.getRow() * ROW_LENGTH;
+    }
+}
+
+function val(index: number): number {
+    if(index < 0) return 23;
+    else if(index > 23) return 0;
+    else return index;
 }

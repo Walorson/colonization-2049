@@ -39,7 +39,7 @@ class ShopItem {
         this.div.onmousedown = () => {
             document.querySelector('.map').innerHTML += `<div class="${this.name}" id="drag"><img src="colonization2049/img/${this.name}.svg" class="svg"></div>`;
 
-            whatIsDragging = this.name;
+            whatIsDragging = eval(`new ${this.name}()`);
             const el = document.getElementById('drag');
 
             document.onmousemove = (e: any) => 
