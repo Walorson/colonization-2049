@@ -30,3 +30,10 @@
     padding-right: 14px;
     line-height: 25px;
 }
+.disabled {
+    filter: grayscale(100%);
+}
+.disabled:hover {
+    filter: grayscale(100%);
+    cursor: default;
+}

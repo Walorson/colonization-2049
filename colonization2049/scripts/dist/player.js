@@ -30,6 +30,9 @@ class Player {
         resourcesPanel.oxygen.textContent = String(this.oxygen);
         resourcesPanel.food.textContent = String(this.food);
         resourcesPanel.resource.textContent = String(this.resource);
+        shopItems.forEach((shopItem) => {
+            shopItem.updateAvailability(this);
+        });
     }
     buyBuilding(building) {
         this.buildings.push(building);

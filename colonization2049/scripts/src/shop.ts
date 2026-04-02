@@ -11,15 +11,24 @@ String.prototype.camelCaseSpace = function(this: string): string {
     return this;
 }
 
-const shopItems = [];
+const shopItems: ShopItem[] = [];
 class ShopItem {
     id: string;
     name: string;
     div: HTMLElement;
+    cost: Record<ResourceKeys, number> = {
+        oxygen: 3,
+        food: 3,
+        resource: 3
+    }
 
-    constructor(building: Building = new Base, cost: number[] = [3,3,3]) {
+    constructor(building: Building = new Base) {
         this.id = 'shopItem'+shopItems.length;
         this.name = building.name;
+        this.cost.oxygen = building.cost.oxygen;
+        this.cost.food = building.cost.food;
+        this.cost.resource = building.cost.resource;
+
         const fullName: string = this.name.camelCaseSpace();
 
         const shop: HTMLElement = document.getElementById("shop")!;
@@ -27,7 +36,7 @@ class ShopItem {
         <div class="shopItem" id="${this.id}">
             <div class="shopImg"><div class="${this.name}"><img src="colonization2049/img/${this.name}.svg" class="svg"></div></div>
             <div class="shopName">${fullName}</div>
-            <div class="shopCost">${building.cost.oxygen}x ${building.cost.food}x ${building.cost.resource}x</div>
+            <div class="shopCost">${this.cost.oxygen}x ${this.cost.food}x ${this.cost.resource}x</div>
         </div>
         `);
 
@@ -37,6 +46,9 @@ class ShopItem {
     init(): void {
         this.div = document.getElementById(this.id) as HTMLElement;
         this.div.onmousedown = () => {
+            if(this.div.classList.contains("disabled"))
+                return;
+
             document.querySelector('.map')!.insertAdjacentHTML("beforeend", `<div class="${this.name}" id="drag"><img src="colonization2049/img/${this.name}.svg" class="svg"></div>`);
 
             whatIsDragging = eval(`new ${this.name}()`);
@@ -56,9 +68,19 @@ class ShopItem {
             }
         };
     }
+
+    updateAvailability(player: Player): void {
+        if(player.oxygen < this.cost.oxygen || player.food < this.cost.food || player.resource < this.cost.resource)
+        {
+            if(this.div.classList.contains("disabled") == false)
+                this.div.classList.add("disabled");
+        }
+        else if(this.div.classList.contains("disabled") == true)
+            this.div.classList.remove("disabled");
+    }
 }
 
-shopItems.push(new ShopItem(new Base, [3, 3, 3]));
-shopItems.push(new ShopItem(new OxygenStation, [0, 2, 2]));
-shopItems.push(new ShopItem(new FarmStation, [2, 0, 2]));
-shopItems.push(new ShopItem(new MineStation, [2, 2, 0]));
+shopItems.push(new ShopItem(new Base));
+shopItems.push(new ShopItem(new OxygenStation));
+shopItems.push(new ShopItem(new FarmStation));
+shopItems.push(new ShopItem(new MineStation));
