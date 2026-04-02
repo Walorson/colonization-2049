@@ -22,7 +22,7 @@ class PlacePoint {
             if((draggedElX >= this.x-15 && draggedElX <= this.x+15) && 
               (draggedElY >= this.y-15 && draggedElY <= this.y+15)) 
                 {
-                    this.setBuilding(whatIsDragging.name);
+                    this.setBuilding(whatIsDragging.name, false, true);
                 }
             
         });
@@ -39,7 +39,7 @@ class PlacePoint {
         map.appendChild(point);
     }
 
-    setBuilding(buildingName: string, force: boolean = false) 
+    setBuilding(buildingName: string, force: boolean = false, mouseEvent: boolean = false) 
     {
         const building: Building = eval(`new ${buildingName}()`);
         if(force == true || building.conditionToBuild(this.getRow(), this.getIndex()))
@@ -47,7 +47,9 @@ class PlacePoint {
             document.getElementById(this.id)!.classList.replace('placePoint', buildingName);
             document.getElementById(this.id)!.innerHTML = `<img src="colonization2049/img/${buildingName}.svg" class="svg">`;
             this.building = eval(`new ${buildingName}()`);
-            activePlayer.buyBuilding(building);
+
+            if(mouseEvent == true)
+                activePlayer.buyBuilding(building);
         }
     }
 

@@ -8,16 +8,16 @@ String.prototype.camelCaseSpace = function () {
 };
 const shopItems = [];
 class ShopItem {
-    constructor(name = "base", cost = [3, 3, 3]) {
+    constructor(building = new Base, cost = [3, 3, 3]) {
         this.id = 'shopItem' + shopItems.length;
-        this.name = name;
+        this.name = building.name;
         const fullName = this.name.camelCaseSpace();
         const shop = document.getElementById("shop");
         shop.insertAdjacentHTML("beforeend", `
         <div class="shopItem" id="${this.id}">
             <div class="shopImg"><div class="${this.name}"><img src="colonization2049/img/${this.name}.svg" class="svg"></div></div>
             <div class="shopName">${fullName}</div>
-            <div class="shopCost">${cost[0]}x ${cost[1]}x ${cost[2]}x</div>
+            <div class="shopCost">${building.cost.oxygen}x ${building.cost.food}x ${building.cost.resource}x</div>
         </div>
         `);
         this.init();
@@ -39,7 +39,7 @@ class ShopItem {
         };
     }
 }
-shopItems.push(new ShopItem('Base', [3, 3, 3]));
-shopItems.push(new ShopItem('OxygenStation', [0, 2, 2]));
-shopItems.push(new ShopItem('FarmStation', [2, 0, 2]));
-shopItems.push(new ShopItem('MineStation', [2, 2, 0]));
+shopItems.push(new ShopItem(new Base, [3, 3, 3]));
+shopItems.push(new ShopItem(new OxygenStation, [0, 2, 2]));
+shopItems.push(new ShopItem(new FarmStation, [2, 0, 2]));
+shopItems.push(new ShopItem(new MineStation, [2, 2, 0]));

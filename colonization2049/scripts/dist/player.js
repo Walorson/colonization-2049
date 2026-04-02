@@ -31,6 +31,13 @@ class Player {
         resourcesPanel.food.textContent = String(this.food);
         resourcesPanel.resource.textContent = String(this.resource);
     }
+    buyBuilding(building) {
+        this.buildings.push(building);
+        this.oxygen -= building.cost.oxygen;
+        this.food -= building.cost.food;
+        this.resource -= building.cost.resource;
+        this.updateResources();
+    }
 }
 players.push(new Player());
 players[0].updateResources();

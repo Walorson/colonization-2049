@@ -53,7 +53,12 @@ class Player {
 
     buyBuilding(building: Building)
     {
-        
+        this.buildings.push(building);
+        this.oxygen -= building.cost.oxygen;
+        this.food -= building.cost.food;
+        this.resource -= building.cost.resource;
+
+        this.updateResources();
     }
 }
 
