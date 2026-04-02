@@ -7,23 +7,41 @@
 
     <link rel="stylesheet" href="colonization2049/css/game.css">
     <link rel="icon" href="colonization2049/img/map.png" sizes="32x32">
+
+    <script src="colonization2049/scripts/dist/globalVariables.js" defer></script>
+    <script src="colonization2049/scripts/dist/building.js" defer></script> 
+    <script src="colonization2049/scripts/dist/placePoint.js" defer></script>
+    <script src="colonization2049/scripts/dist/generatePlacePoint.js" defer></script>
+    <script src="colonization2049/scripts/dist/player.js" defer></script>
+    <script src="colonization2049/scripts/dist/shop.js" defer></script>
+    <script src="colonization2049/scripts/dist/game.js" defer></script>
 </head>
 <body>
     <div class="shop" id="shop">
         <div class="shopHeader">💦🚜🛢</div>
     </div>
+
+   <div class="resources-panel">
+        <p class="resources-title">Resources</p>
+        <table class="resources-table">
+            <tr>
+                <td class="resource-name oxygen">Oxygen</td>
+                <td class="resource-value oxygen" id="resource-oxygen-value">120</td>
+            </tr>
+            <tr>
+                <td class="resource-name food">Food</td>
+                <td class="resource-value food" id="resource-food-value">75</td>
+            </tr>
+            <tr>
+                <td class="resource-name generic-resource">Resource</td>
+                <td class="resource-value generic-resource" id="resource-resource-value">340</td>
+            </tr>
+        </table>
+  </div>
+
     <div class="map">     
         <img src="colonization2049/img/map.png">
     </div>
-    
-    <script src="colonization2049/scripts/dist/globalVariables.js"></script>
-    <script src="colonization2049/scripts/dist/dragAndDrop.js"></script>
-    <script src="colonization2049/scripts/dist/building.js"></script> 
-    <script src="colonization2049/scripts/dist/placePoint.js"></script>
-    <script src="colonization2049/scripts/dist/generatePlacePoint.js"></script>
-    <script src="colonization2049/scripts/dist/player.js"></script>
-    <script src="colonization2049/scripts/dist/shop.js"></script>
-    <script src="colonization2049/scripts/dist/game.js"></script>
     
 </body>
 </html>

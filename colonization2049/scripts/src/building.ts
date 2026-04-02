@@ -1,6 +1,6 @@
 abstract class Building {
     name: string;
-
+                                                //@ts-ignore
     conditionToBuild(row: number, index: number): boolean 
     { 
         if(pointsMap[row][val(index - 1)].building instanceof Base || pointsMap[row][val(index + 1)].building instanceof Base) {
@@ -35,6 +35,7 @@ class Base extends Building {
             pointsMap[row - 1][val(index + 1)].building instanceof Base) {
                 return true;
             }
+            else return false;
         }
         else return false;
     }

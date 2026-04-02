@@ -30,7 +30,7 @@ class PlacePoint {
             document.getElementById(this.id).classList.replace('placePoint', buildingName);
             document.getElementById(this.id).innerHTML = `<img src="colonization2049/img/${buildingName}.svg" class="svg">`;
             this.building = eval(`new ${buildingName}()`);
-            activePlayer.buildings.push(eval(`new ${buildingName}()`));
+            activePlayer.buildings.push(building);
         }
     }
     getRow() {

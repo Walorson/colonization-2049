@@ -13,19 +13,19 @@ class ShopItem {
         this.name = name;
         const fullName = this.name.camelCaseSpace();
         const shop = document.getElementById("shop");
-        shop.innerHTML += `
+        shop.insertAdjacentHTML("beforeend", `
         <div class="shopItem" id="${this.id}">
             <div class="shopImg"><div class="${this.name}"><img src="colonization2049/img/${this.name}.svg" class="svg"></div></div>
             <div class="shopName">${fullName}</div>
             <div class="shopCost">${cost[0]}x ${cost[1]}x ${cost[2]}x</div>
         </div>
-        `;
-        this.update();
+        `);
+        this.init();
     }
-    update() {
+    init() {
         this.div = document.getElementById(this.id);
         this.div.onmousedown = () => {
-            document.querySelector('.map').innerHTML += `<div class="${this.name}" id="drag"><img src="colonization2049/img/${this.name}.svg" class="svg"></div>`;
+            document.querySelector('.map').insertAdjacentHTML("beforeend", `<div class="${this.name}" id="drag"><img src="colonization2049/img/${this.name}.svg" class="svg"></div>`);
             whatIsDragging = eval(`new ${this.name}()`);
             const el = document.getElementById('drag');
             document.onmousemove = (e) => {
@@ -43,6 +43,3 @@ shopItems.push(new ShopItem('Base', [3, 3, 3]));
 shopItems.push(new ShopItem('OxygenStation', [0, 2, 2]));
 shopItems.push(new ShopItem('FarmStation', [2, 0, 2]));
 shopItems.push(new ShopItem('MineStation', [2, 2, 0]));
-shopItems.forEach(item => {
-    item.update();
-});

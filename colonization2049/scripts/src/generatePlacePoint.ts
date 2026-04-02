@@ -1,4 +1,4 @@
-const map: HTMLBaseElement = document.querySelector('.map');
+const map: HTMLBaseElement = document.querySelector('.map')!;
 
 function generateCircleOfPoints(diameter: number, count: number, shift: number = 0, iteration: number = 0) 
 {

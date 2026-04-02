@@ -1,12 +1,12 @@
 class PlacePoint {
     id: string;
     idNumber: number;
-    div: HTMLElement;
+    div: HTMLElement | null;
     x: number;
     y: number;
     width: number;
     height: number;
-    building: Building;
+    building: Building | null;
     constructor(x: number, y: number, id: number) {
         this.id  = 'placePoint'+id;
         this.idNumber = id;
@@ -44,10 +44,10 @@ class PlacePoint {
         const building: Building = eval(`new ${buildingName}()`);
         if(force == true || building.conditionToBuild(this.getRow(), this.getIndex()))
         {
-            document.getElementById(this.id).classList.replace('placePoint', buildingName);
-            document.getElementById(this.id).innerHTML = `<img src="colonization2049/img/${buildingName}.svg" class="svg">`;
+            document.getElementById(this.id)!.classList.replace('placePoint', buildingName);
+            document.getElementById(this.id)!.innerHTML = `<img src="colonization2049/img/${buildingName}.svg" class="svg">`;
             this.building = eval(`new ${buildingName}()`);
-            activePlayer.buildings.push(eval(`new ${buildingName}()`));
+            activePlayer.buyBuilding(building);
         }
     }
 

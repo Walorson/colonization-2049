@@ -4,5 +4,6 @@
         "outDir": "./colonization2049/scripts/dist",
         "target": "ES2015",
         "noImplicitAny": true,
+        "strictPropertyInitialization": false
     }
 }

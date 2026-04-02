@@ -1,3 +1,15 @@
+interface resourcesPanel {
+    oxygen: HTMLElement,
+    food: HTMLElement,
+    resource: HTMLElement
+}
+
+const resourcesPanel = {
+    oxygen: document.getElementById("resource-oxygen-value")!,
+    food: document.getElementById("resource-food-value")!,
+    resource: document.getElementById("resource-resource-value")!
+}
+
 class Player {
     id: number;
     color: string;
@@ -10,9 +22,9 @@ class Player {
         activePlayer = this;
         this.id = players.length;
         this.color = "orange";
-        this.oxygen = 2;
-        this.food = 2;
-        this.resource = 2;
+        this.oxygen = 10;
+        this.food = 10;
+        this.resource = 8;
         this.buildings = [];
 
         pointsMap[0][0].setBuilding("Base", true);
@@ -31,6 +43,19 @@ class Player {
 
         return count;
     }
+
+    updateResources()
+    {
+        resourcesPanel.oxygen.textContent = String(this.oxygen);
+        resourcesPanel.food.textContent = String(this.food);
+        resourcesPanel.resource.textContent = String(this.resource);
+    }
+
+    buyBuilding(building: Building)
+    {
+        
+    }
 }
 
 players.push(new Player());
+players[0].updateResources();

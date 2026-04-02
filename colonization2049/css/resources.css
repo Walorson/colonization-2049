@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #0b1020;
+    color: #f5f5f5;
+}
+
+.resources-panel {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: 10px;
+    padding: 12px 16px;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    min-width: 190px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9ca3af;
+}
+
+.resources-title {
+    font-size: 18px;
+    margin: 0 0 8px;
+}
+
+.resources-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.resources-table tr {
+    border-bottom: 1px solid rgba(55, 65, 81, 0.7);
+}
+
+.resources-table tr:last-child {
+    border-bottom: none;
+}
+
+.resources-table td {
+    padding: 6px 0;
+}
+
+.resource-value {
+    text-align: right;
+    font-weight: 600;
+}
+
+.oxygen {
+    color: #38bdf8;
+}
+
+.food {
+    color: #22c55e;
+}
+
+.generic-resource {
+    color: #fb923c;
+}
