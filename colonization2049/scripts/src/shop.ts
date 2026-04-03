@@ -11,7 +11,6 @@ String.prototype.camelCaseSpace = function(this: string): string {
     return this;
 }
 
-const shopItems: ShopItem[] = [];
 class ShopItem {
     id: string;
     name: string;

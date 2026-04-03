@@ -3,6 +3,7 @@ const ROW_LENGTH: number = 24;
 const BUILDING_SIZE: number = 35;
 
 const players: Player[] = [];
+const shopItems: ShopItem[] = [];
 let activePlayer: Player = players[0];
 const pointsMap: PlacePoint[][] = [];
 let draggedElX: number;

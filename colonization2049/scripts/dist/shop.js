@@ -6,7 +6,6 @@ String.prototype.camelCaseSpace = function () {
     }
     return this;
 };
-const shopItems = [];
 class ShopItem {
     constructor(building = new Base) {
         this.cost = {

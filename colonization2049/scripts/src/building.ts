@@ -24,6 +24,11 @@ abstract class Building {
             }
         else return false;
     }
+
+    showPlacementPossibilities() 
+    {
+        
+    }
 }
 class Base extends Building {
     constructor() {

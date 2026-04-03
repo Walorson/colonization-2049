@@ -50,9 +50,12 @@ class Player {
         resourcesPanel.food.textContent = String(this.food);
         resourcesPanel.resource.textContent = String(this.resource);
 
-        shopItems.forEach((shopItem: ShopItem) => {
-            shopItem.updateAvailability(this);
-        });
+        if(shopItems.length > 0)
+        {
+            shopItems.forEach((shopItem: ShopItem) => {
+                shopItem.updateAvailability(this);
+            });
+        }
     }
 
     buyBuilding(building: Building)

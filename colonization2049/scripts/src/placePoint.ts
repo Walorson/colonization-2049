@@ -7,6 +7,7 @@ class PlacePoint {
     width: number;
     height: number;
     building: Building | null;
+    
     constructor(x: number, y: number, id: number) {
         this.id  = 'placePoint'+id;
         this.idNumber = id;
@@ -28,7 +29,7 @@ class PlacePoint {
         });
     }
 
-    setPoint(x: number, y: number) 
+    setPoint(x: number, y: number): void
     {
         let point: HTMLElement = document.createElement('div');
         point.classList.add('placePoint');
@@ -39,7 +40,7 @@ class PlacePoint {
         map.appendChild(point);
     }
 
-    setBuilding(buildingName: string, force: boolean = false, mouseEvent: boolean = false) 
+    setBuilding(buildingName: string, force: boolean = false, mouseEvent: boolean = false): void
     {
         const building: Building = eval(`new ${buildingName}()`);
         if(force == true || building.conditionToBuild(this.getRow(), this.getIndex()))
