@@ -79,7 +79,10 @@ class Station extends Building {
         super();
         this.name = 'Station';
     }
-    giveReward() { }
+    giveResource(player) {
+        /* give 1 source */
+        player.updateResources();
+    }
 }
 class OxygenStation extends Station {
     constructor() {
@@ -90,6 +93,10 @@ class OxygenStation extends Station {
             "food": 2,
             "resource": 2
         };
+    }
+    giveResource(player) {
+        player.oxygen++;
+        super.giveResource(player);
     }
 }
 class FarmStation extends Station {
@@ -102,6 +109,10 @@ class FarmStation extends Station {
             "resource": 2
         };
     }
+    giveResource(player) {
+        player.food++;
+        super.giveResource(player);
+    }
 }
 class MineStation extends Station {
     constructor() {
@@ -112,6 +123,10 @@ class MineStation extends Station {
             "food": 2,
             "resource": 0
         };
+    }
+    giveResource(player) {
+        player.resource++;
+        super.giveResource(player);
     }
 }
 function hidePlacementPossibilities() {

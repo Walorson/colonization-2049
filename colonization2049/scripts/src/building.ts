@@ -95,7 +95,10 @@ abstract class Station extends Building {
         super();
         this.name = 'Station';
     }
-    giveReward() { /* give 1 source */ }
+    giveResource(player: Player) { 
+        /* give 1 source */ 
+        player.updateResources();
+    }
 }
 class OxygenStation extends Station {
     constructor() {
@@ -106,6 +109,11 @@ class OxygenStation extends Station {
             "food": 2,
             "resource": 2
         };
+    }
+
+    giveResource(player: Player): void {
+        player.oxygen++;
+        super.giveResource(player);
     }
 }
 class FarmStation extends Station {
@@ -118,6 +126,11 @@ class FarmStation extends Station {
             "resource": 2
         };
     }
+
+    giveResource(player: Player): void {
+        player.food++;
+        super.giveResource(player);
+    }
 }
 class MineStation extends Station {
     constructor() {
@@ -128,6 +141,10 @@ class MineStation extends Station {
             "food": 2,
             "resource": 0
         };
+    }
+    giveResource(player: Player): void {
+        player.resource++;
+        super.giveResource(player);
     }
 }
 
