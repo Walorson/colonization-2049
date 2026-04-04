@@ -20,6 +20,24 @@ class Building {
             else
                 return false;
     }
+    showPlacementPossibilities(player) {
+        player.buildings.forEach((building) => {
+            if (building instanceof Base) {
+                if (building.row > 0) {
+                    pointsMap[building.row - 1][val(building.index - 1)].div.classList.add("visible");
+                    pointsMap[building.row - 1][val(building.index)].div.classList.add("visible");
+                    pointsMap[building.row - 1][val(building.index + 1)].div.classList.add("visible");
+                }
+                if (building.row < 4) {
+                    pointsMap[building.row + 1][val(building.index - 1)].div.classList.add("visible");
+                    pointsMap[building.row + 1][val(building.index)].div.classList.add("visible");
+                    pointsMap[building.row + 1][val(building.index + 1)].div.classList.add("visible");
+                }
+                pointsMap[building.row][val(building.index - 1)].div.classList.add("visible");
+                pointsMap[building.row][val(building.index + 1)].div.classList.add("visible");
+            }
+        });
+    }
 }
 class Base extends Building {
     constructor() {
@@ -43,6 +61,17 @@ class Base extends Building {
         }
         else
             return false;
+    }
+    showPlacementPossibilities(player) {
+        player.buildings.forEach((building) => {
+            if (building instanceof Base && building.row == player.baseCount - 1) {
+                if (building.row < 4) {
+                    pointsMap[building.row + 1][val(building.index - 1)].div.classList.add("visible");
+                    pointsMap[building.row + 1][val(building.index)].div.classList.add("visible");
+                    pointsMap[building.row + 1][val(building.index + 1)].div.classList.add("visible");
+                }
+            }
+        });
     }
 }
 class Station extends Building {
@@ -84,4 +113,12 @@ class MineStation extends Station {
             "resource": 0
         };
     }
+}
+function hidePlacementPossibilities() {
+    document.querySelectorAll(".visible").forEach((point) => {
+        point.classList.remove("visible");
+    });
+    setTimeout(() => {
+        whatIsDragging = null;
+    }, 5);
 }

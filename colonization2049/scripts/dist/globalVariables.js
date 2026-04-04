@@ -7,4 +7,4 @@ let activePlayer = players[0];
 const pointsMap = [];
 let draggedElX;
 let draggedElY;
-let whatIsDragging;
+let whatIsDragging = null;

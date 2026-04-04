@@ -3,6 +3,8 @@ type ResourceKeys = "oxygen" | "food" | "resource";
 abstract class Building {
     name: string;
     cost: Record<ResourceKeys, number>;
+    row: number;
+    index: number;
                                                 //@ts-ignore
     conditionToBuild(row: number, index: number): boolean 
     { 
@@ -25,9 +27,28 @@ abstract class Building {
         else return false;
     }
 
-    showPlacementPossibilities() 
+    showPlacementPossibilities(player: Player): void
     {
-        
+        player.buildings.forEach((building: Building) => {
+            if(building instanceof Base)
+            {
+                if(building.row > 0)
+                {
+                    pointsMap[building.row - 1][val(building.index - 1)].div!.classList.add("visible");
+                    pointsMap[building.row - 1][val(building.index)].div!.classList.add("visible");
+                    pointsMap[building.row - 1][val(building.index + 1)].div!.classList.add("visible");
+                }
+                if(building.row < 4)
+                {
+                    pointsMap[building.row + 1][val(building.index - 1)].div!.classList.add("visible");
+                    pointsMap[building.row + 1][val(building.index)].div!.classList.add("visible");
+                    pointsMap[building.row + 1][val(building.index + 1)].div!.classList.add("visible");
+                }
+
+                pointsMap[building.row][val(building.index - 1)].div!.classList.add("visible");
+                pointsMap[building.row][val(building.index + 1)].div!.classList.add("visible");
+            }
+        });
     }
 }
 class Base extends Building {
@@ -51,6 +72,21 @@ class Base extends Building {
             else return false;
         }
         else return false;
+    }
+
+    showPlacementPossibilities(player: Player): void
+    {
+        player.buildings.forEach((building: Building) => {
+            if(building instanceof Base && building.row == player.baseCount - 1)
+            {
+                if(building.row < 4)
+                {
+                    pointsMap[building.row + 1][val(building.index - 1)].div!.classList.add("visible");
+                    pointsMap[building.row + 1][val(building.index)].div!.classList.add("visible");
+                    pointsMap[building.row + 1][val(building.index + 1)].div!.classList.add("visible");
+                }
+            }
+        });
     }
 }
 
@@ -93,4 +129,15 @@ class MineStation extends Station {
             "resource": 0
         };
     }
+}
+
+function hidePlacementPossibilities(): void
+{
+    document.querySelectorAll<HTMLElement>(".visible").forEach((point: HTMLElement) => {
+        point.classList.remove("visible");
+    })
+
+    setTimeout(() => {
+        whatIsDragging = null;
+    }, 5);
 }

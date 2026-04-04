@@ -35,4 +35,8 @@ body {
     border-radius: 50%;
     opacity: 70%;
     box-shadow: 0 0 5px 3px rgb(171, 52, 52);
+    opacity: 0;
+}
+.visible {
+    opacity: 1;
 }

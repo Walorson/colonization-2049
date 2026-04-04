@@ -8,4 +8,4 @@ let activePlayer: Player = players[0];
 const pointsMap: PlacePoint[][] = [];
 let draggedElX: number;
 let draggedElY: number;
-let whatIsDragging: Building;
+let whatIsDragging: Building | null = null;

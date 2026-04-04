@@ -8,14 +8,15 @@ class Player {
         activePlayer = this;
         this.id = players.length;
         this.color = "orange";
-        this.oxygen = 10;
-        this.food = 10;
-        this.resource = 8;
+        this.oxygen = 50;
+        this.food = 50;
+        this.resource = 28;
         this.buildings = [];
-        pointsMap[0][0].setBuilding("Base", true);
-        pointsMap[0][1].setBuilding("OxygenStation", true);
-        pointsMap[0][23].setBuilding("FarmStation", true);
-        pointsMap[1][0].setBuilding("MineStation", true);
+        this.baseCount = 1;
+        pointsMap[0][0].setBuilding(new Base, true);
+        pointsMap[0][1].setBuilding(new OxygenStation, true);
+        pointsMap[0][23].setBuilding(new FarmStation, true);
+        pointsMap[1][0].setBuilding(new MineStation, true);
     }
     count(buildingName) {
         let count = 0;
@@ -41,6 +42,8 @@ class Player {
         this.oxygen -= building.cost.oxygen;
         this.food -= building.cost.food;
         this.resource -= building.cost.resource;
+        if (building instanceof Base)
+            this.baseCount++;
         this.updateResources();
     }
 }

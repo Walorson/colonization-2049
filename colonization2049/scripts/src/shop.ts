@@ -51,6 +51,7 @@ class ShopItem {
             document.querySelector('.map')!.insertAdjacentHTML("beforeend", `<div class="${this.name}" id="drag"><img src="colonization2049/img/${this.name}.svg" class="svg"></div>`);
 
             whatIsDragging = eval(`new ${this.name}()`);
+            whatIsDragging!.showPlacementPossibilities(activePlayer);
             const el: HTMLElement = document.getElementById('drag')!;
 
             document.onmousemove = (e: any) => 
@@ -64,6 +65,7 @@ class ShopItem {
             document.onmouseup = (e: any) => 
             {
                 el.remove();
+                hidePlacementPossibilities();
             }
         };
     }

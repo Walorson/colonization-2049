@@ -36,6 +36,7 @@ class ShopItem {
                 return;
             document.querySelector('.map').insertAdjacentHTML("beforeend", `<div class="${this.name}" id="drag"><img src="colonization2049/img/${this.name}.svg" class="svg"></div>`);
             whatIsDragging = eval(`new ${this.name}()`);
+            whatIsDragging.showPlacementPossibilities(activePlayer);
             const el = document.getElementById('drag');
             document.onmousemove = (e) => {
                 draggedElX = (e.clientX) - ((window.innerWidth - MAP_SIZE) / 2) - BUILDING_SIZE / 2,
@@ -44,6 +45,7 @@ class ShopItem {
             };
             document.onmouseup = (e) => {
                 el.remove();
+                hidePlacementPossibilities();
             };
         };
     }

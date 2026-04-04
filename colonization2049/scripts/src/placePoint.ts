@@ -1,12 +1,10 @@
 class PlacePoint {
-    id: string;
-    idNumber: number;
-    div: HTMLElement | null;
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-    building: Building | null;
+    private id: string;
+    private idNumber: number;
+    public div: HTMLElement | null;
+    private x: number;
+    private y: number;
+    public building: Building | null;
     
     constructor(x: number, y: number, id: number) {
         this.id  = 'placePoint'+id;
@@ -23,7 +21,7 @@ class PlacePoint {
             if((draggedElX >= this.x-15 && draggedElX <= this.x+15) && 
               (draggedElY >= this.y-15 && draggedElY <= this.y+15)) 
                 {
-                    this.setBuilding(whatIsDragging.name, false, true);
+                    this.setBuilding(whatIsDragging!, false, true);
                 }
             
         });
@@ -40,17 +38,21 @@ class PlacePoint {
         map.appendChild(point);
     }
 
-    setBuilding(buildingName: string, force: boolean = false, mouseEvent: boolean = false): void
+    setBuilding(building: Building, force: boolean = false, mouseEvent: boolean = false): void
     {
-        const building: Building = eval(`new ${buildingName}()`);
         if(force == true || building.conditionToBuild(this.getRow(), this.getIndex()))
         {
-            document.getElementById(this.id)!.classList.replace('placePoint', buildingName);
-            document.getElementById(this.id)!.innerHTML = `<img src="colonization2049/img/${buildingName}.svg" class="svg">`;
-            this.building = eval(`new ${buildingName}()`);
+            document.getElementById(this.id)!.classList.replace('placePoint', building.name);
+            document.getElementById(this.id)!.innerHTML = `<img src="colonization2049/img/${building.name}.svg" class="svg">`;
+            building.row = this.getRow();
+            building.index = this.getIndex();
 
             if(mouseEvent == true)
                 activePlayer.buyBuilding(building);
+            else
+                activePlayer.buildings.push(building);
+
+            this.building = building;
         }
     }
 
@@ -64,7 +66,7 @@ class PlacePoint {
 }
 
 function val(index: number): number {
-    if(index < 0) return 23;
-    else if(index > 23) return 0;
+    if(index < 0) return ROW_LENGTH - 1;
+    else if(index >= ROW_LENGTH) return 0;
     else return index;
 }

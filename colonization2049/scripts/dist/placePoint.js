@@ -12,7 +12,7 @@ class PlacePoint {
                 return;
             if ((draggedElX >= this.x - 15 && draggedElX <= this.x + 15) &&
                 (draggedElY >= this.y - 15 && draggedElY <= this.y + 15)) {
-                this.setBuilding(whatIsDragging.name, false, true);
+                this.setBuilding(whatIsDragging, false, true);
             }
         });
     }
@@ -24,14 +24,17 @@ class PlacePoint {
         point.style.top = y + "px";
         map.appendChild(point);
     }
-    setBuilding(buildingName, force = false, mouseEvent = false) {
-        const building = eval(`new ${buildingName}()`);
+    setBuilding(building, force = false, mouseEvent = false) {
         if (force == true || building.conditionToBuild(this.getRow(), this.getIndex())) {
-            document.getElementById(this.id).classList.replace('placePoint', buildingName);
-            document.getElementById(this.id).innerHTML = `<img src="colonization2049/img/${buildingName}.svg" class="svg">`;
-            this.building = eval(`new ${buildingName}()`);
+            document.getElementById(this.id).classList.replace('placePoint', building.name);
+            document.getElementById(this.id).innerHTML = `<img src="colonization2049/img/${building.name}.svg" class="svg">`;
+            building.row = this.getRow();
+            building.index = this.getIndex();
             if (mouseEvent == true)
                 activePlayer.buyBuilding(building);
+            else
+                activePlayer.buildings.push(building);
+            this.building = building;
         }
     }
     getRow() {
@@ -43,8 +46,8 @@ class PlacePoint {
 }
 function val(index) {
     if (index < 0)
-        return 23;
-    else if (index > 23)
+        return ROW_LENGTH - 1;
+    else if (index >= ROW_LENGTH)
         return 0;
     else
         return index;
