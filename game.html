@@ -14,11 +14,25 @@
     <script src="colonization2049/scripts/dist/generatePlacePoint.js" defer></script>
     <script src="colonization2049/scripts/dist/player.js" defer></script>
     <script src="colonization2049/scripts/dist/shop.js" defer></script>
+    <script src="colonization2049/scripts/dist/rollDice.js" defer></script>
     <script src="colonization2049/scripts/dist/productionPhase.js" defer></script>
     <script src="colonization2049/scripts/dist/discoveryPhase.js" defer></script>
     <script src="colonization2049/scripts/dist/game.js" defer></script>
 </head>
 <body>
+
+    <div class="dice-overlay" id="diceOverlay">
+        <div class="dice-container">
+            <div class="dice" id="dice">
+            <div class="dice-face front"><img src="./colonization2049/img/OxygenStation.svg" /></div>
+            <div class="dice-face back"><img src="./colonization2049/img/FarmStation.svg" /></div>
+            <div class="dice-face right"><img src="./colonization2049/img/Barrel.svg" /></div>
+            <div class="dice-face left"><img src="./colonization2049/img/Diamond.svg" /></div>
+            <div class="dice-face top"><img src="./colonization2049/img/Thief.svg" /></div>
+            <div class="dice-face bottom"><img src="./colonization2049/img/Cross.svg" /></div>
+            </div>
+        </div>
+    </div>
 
     <div id="discovery-window" class="window">
         <div class="window-header">

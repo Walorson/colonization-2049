@@ -1,7 +1,8 @@
 interface resourcesPanel {
     oxygen: HTMLElement,
     food: HTMLElement,
-    resource: HTMLElement
+    resource: HTMLElement,
+    road: HTMLElement
 }
 
 const resourcesPanel = {

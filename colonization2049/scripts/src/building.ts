@@ -152,6 +152,16 @@ class MineStation extends Station {
     }
 }
 
+class Laboratory extends Building {
+    currencyRate: number;
+
+    constructor() {
+        super();
+        this.name = 'Laboratory';
+        this.currencyRate = 3;
+    }
+}
+
 function hidePlacementPossibilities(): void
 {
     document.querySelectorAll<HTMLElement>(".visible").forEach((point: HTMLElement) => {
