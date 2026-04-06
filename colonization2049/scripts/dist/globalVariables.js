@@ -8,3 +8,15 @@ const pointsMap = [];
 let draggedElX;
 let draggedElY;
 let whatIsDragging = null;
+HTMLElement.prototype.hideWithAnimation = function (duration) {
+    this.style.opacity = '0';
+    setTimeout(() => {
+        this.style.display = 'none';
+    }, duration);
+};
+HTMLElement.prototype.showWithAnimation = function (duration) {
+    this.style.display = 'block';
+    setTimeout(() => {
+        this.style.opacity = '1';
+    }, 1);
+};

@@ -14,3 +14,6 @@ function productionPhase(resource) {
         specificStations.forEach((station) => station.giveResource(player));
     });
 }
+function discoveryPhase() {
+    discoveryWindow.showWithAnimation(200);
+}

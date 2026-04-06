@@ -46,7 +46,8 @@ class Base extends Building {
         this.cost = {
             "oxygen": 3,
             "food": 3,
-            "resource": 3
+            "resource": 3,
+            "road": 0
         };
     }
     conditionToBuild(row, index) {
@@ -91,7 +92,8 @@ class OxygenStation extends Station {
         this.cost = {
             "oxygen": 0,
             "food": 2,
-            "resource": 2
+            "resource": 2,
+            "road": 0
         };
     }
     giveResource(player) {
@@ -106,7 +108,8 @@ class FarmStation extends Station {
         this.cost = {
             "oxygen": 2,
             "food": 0,
-            "resource": 2
+            "resource": 2,
+            "road": 0
         };
     }
     giveResource(player) {
@@ -121,7 +124,8 @@ class MineStation extends Station {
         this.cost = {
             "oxygen": 2,
             "food": 2,
-            "resource": 0
+            "resource": 0,
+            "road": 0
         };
     }
     giveResource(player) {

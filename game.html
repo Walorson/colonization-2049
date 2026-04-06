@@ -14,9 +14,43 @@
     <script src="colonization2049/scripts/dist/generatePlacePoint.js" defer></script>
     <script src="colonization2049/scripts/dist/player.js" defer></script>
     <script src="colonization2049/scripts/dist/shop.js" defer></script>
+    <script src="colonization2049/scripts/dist/discoveryWindow.js" defer></script>
     <script src="colonization2049/scripts/dist/game.js" defer></script>
 </head>
 <body>
+
+    <div id="discovery-window">
+        <div class="discovery-window-header">
+            <h2 class="discovery-window-title">Choose your reward</h2>
+        </div>
+
+        <div class="cards-row">
+        <div class="card" data-resource="oxygen"> 
+                <img class="card-image" src="./colonization2049/img/oxygen.jpg" alt="Karta 1" />
+                <div class="card-title">Oxygen</div>
+                <div class="card-gloss"></div>
+        </div>
+
+        <div class="card" data-resource="food">
+                <img class="card-image" src="./colonization2049/img/food.jpg" alt="Karta 2" />
+                <div class="card-title">Food</div>
+                <div class="card-gloss"></div>
+        </div>
+
+        <div class="card" data-resource="resource">
+                <img class="card-image" src="./colonization2049/img/resource.jpg" alt="Karta 3" />
+                <div class="card-title">Resource</div>
+                <div class="card-gloss"></div>
+        </div>
+
+        <div class="card" data-resource="road">
+                <img class="card-image" src="./colonization2049/img/road.jpg" alt="Karta 4" />
+                <div class="card-title">Road</div>
+                <div class="card-gloss"></div>
+        </div>
+        </div>
+  </div>
+
     <div class="shop" id="shop">
         <div class="shopHeader">💦🚜🛢</div>
     </div>
@@ -35,6 +69,10 @@
             <tr>
                 <td class="resource-name generic-resource">Resource</td>
                 <td class="resource-value generic-resource" id="resource-resource-value">340</td>
+            </tr>
+            <tr>
+                <td class="resource-name road">Road</td>
+                <td class="resource-value road" id="resource-road-value">0</td>
             </tr>
         </table>
   </div>

@@ -1,7 +1,8 @@
 const resourcesPanel = {
     oxygen: document.getElementById("resource-oxygen-value"),
     food: document.getElementById("resource-food-value"),
-    resource: document.getElementById("resource-resource-value")
+    resource: document.getElementById("resource-resource-value"),
+    road: document.getElementById("resource-road-value")
 };
 class Player {
     constructor() {
@@ -11,6 +12,7 @@ class Player {
         this.oxygen = 50;
         this.food = 50;
         this.resource = 28;
+        this.road = 0;
         this.buildings = [];
         this.baseCount = 1;
         pointsMap[0][0].setBuilding(new Base, true);
@@ -31,6 +33,7 @@ class Player {
         resourcesPanel.oxygen.textContent = String(this.oxygen);
         resourcesPanel.food.textContent = String(this.food);
         resourcesPanel.resource.textContent = String(this.resource);
+        resourcesPanel.road.textContent = String(this.road);
         if (shopItems.length > 0) {
             shopItems.forEach((shopItem) => {
                 shopItem.updateAvailability(this);
@@ -42,6 +45,7 @@ class Player {
         this.oxygen -= building.cost.oxygen;
         this.food -= building.cost.food;
         this.resource -= building.cost.resource;
+        this.road -= building.cost.road;
         if (building instanceof Base)
             this.baseCount++;
         this.updateResources();
@@ -49,3 +53,19 @@ class Player {
 }
 players.push(new Player());
 players[0].updateResources();
+function giveReward(to, resource) {
+    switch (resource) {
+        case "oxygen":
+            to.oxygen++;
+            break;
+        case "food":
+            to.food++;
+            break;
+        case "resource":
+            to.resource++;
+            break;
+        case "road":
+            to.road++;
+            break;
+    }
+}

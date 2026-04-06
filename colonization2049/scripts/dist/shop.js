@@ -11,7 +11,8 @@ class ShopItem {
         this.cost = {
             oxygen: 3,
             food: 3,
-            resource: 3
+            resource: 3,
+            road: 0
         };
         this.id = 'shopItem' + shopItems.length;
         this.name = building.name;

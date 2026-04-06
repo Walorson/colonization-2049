@@ -18,7 +18,8 @@ class ShopItem {
     cost: Record<ResourceKeys, number> = {
         oxygen: 3,
         food: 3,
-        resource: 3
+        resource: 3,
+        road: 0
     }
 
     constructor(building: Building = new Base) {

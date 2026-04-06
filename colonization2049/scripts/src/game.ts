@@ -19,3 +19,8 @@ function productionPhase(resource: ResourceKeys)
         specificStations.forEach((station: Station) => station.giveResource(player));
     });
 }
+
+function discoveryPhase()
+{
+    discoveryWindow.showWithAnimation(200);
+}
