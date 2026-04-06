@@ -14,14 +14,15 @@
     <script src="colonization2049/scripts/dist/generatePlacePoint.js" defer></script>
     <script src="colonization2049/scripts/dist/player.js" defer></script>
     <script src="colonization2049/scripts/dist/shop.js" defer></script>
-    <script src="colonization2049/scripts/dist/discoveryWindow.js" defer></script>
+    <script src="colonization2049/scripts/dist/productionPhase.js" defer></script>
+    <script src="colonization2049/scripts/dist/discoveryPhase.js" defer></script>
     <script src="colonization2049/scripts/dist/game.js" defer></script>
 </head>
 <body>
 
-    <div id="discovery-window">
-        <div class="discovery-window-header">
-            <h2 class="discovery-window-title">Choose your reward</h2>
+    <div id="discovery-window" class="window">
+        <div class="window-header">
+            <h2 class="window-title">Choose your reward</h2>
         </div>
 
         <div class="cards-row">
@@ -49,6 +50,23 @@
                 <div class="card-gloss"></div>
         </div>
         </div>
+  </div>
+
+  <div class="window" id="production-window">
+        <div class="flex">
+            <h2 class="window-title">OXYGEN PRODUCTION</h2>
+
+            <div class="card">
+                <div class="card-inner">
+                    <img class="card-image" src="./colonization2049/img/oxygen.jpg" alt="Oxygen Card" />
+                    <div class="card-gloss"></div>
+                </div>
+            </div>    
+
+    <p class="window-text">Your stations have produced <strong><span class="resource-count">3</span> <span class="resource-name">oxygens</span></strong></p>
+
+    <button class="window-button">OK</button>
+    </div>
   </div>
 
     <div class="shop" id="shop">

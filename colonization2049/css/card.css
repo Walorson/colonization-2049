@@ -1,4 +1,4 @@
-#discovery-window {
+.window {
     background: rgba(15, 23, 42, 0.96);
     border-radius: 18px;
     padding: 24px 28px 28px;
@@ -17,12 +17,46 @@
     display: none;
 }
 
-.discovery-window-header {
+#production-window
+{
+    width: 380px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.window-text {
+    font-size: 15px;
+    margin-bottom: 22px;
+    color: #cbd5e1;
+}
+
+.window-button {
+    padding: 10px 26px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    background: rgba(30, 41, 59, 0.8);
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.window-button:hover {
+    background: rgba(51, 65, 85, 0.9);
+    border-color: rgba(248, 250, 252, 0.6);
+}
+
+.window-header {
     margin-bottom: 18px;
     text-align: center;
 }
 
-.discovery-window-title {
+.window-title {
     font-size: 20px;
     font-weight: 600;
     letter-spacing: 0.04em;

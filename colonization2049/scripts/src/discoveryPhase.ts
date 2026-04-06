@@ -8,3 +8,8 @@ discoveryWindow.querySelectorAll<HTMLElement>(".card").forEach((card: HTMLElemen
         discoveryWindow.hideWithAnimation(200);
     }
 });
+
+function discoveryPhase()
+{
+    discoveryWindow.showWithAnimation(200);
+}
