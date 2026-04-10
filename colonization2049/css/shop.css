@@ -9,7 +9,7 @@
 .shopImg {
     margin: 0 15px;
 }
-.shopItem, .shopHeader {
+.shopBuyable, .shopHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -20,9 +20,14 @@
     gap: 25px;
     line-height: 200%;
 }
-.shopItem:hover {
+.shopBuyable:hover {
     filter: brightness(150%);
     cursor: pointer;
+}
+.shopItem {
+    display: grid;
+    grid-template-columns: 300px 30px;
+    align-items: center;
 }
 .shopHeader {
     padding: 0;
@@ -36,4 +41,22 @@
 .disabled:hover {
     filter: grayscale(100%);
     cursor: default;
+}
+.shopUpgrade {
+    background-color: rgb(231, 93, 25);
+    width: 20px;
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    padding: 10px 0;
+    cursor: pointer;
+}
+.shopUpgrade img {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%);
+}
+.shopUpgrade:hover {
+    filter: brightness(120%);
 }

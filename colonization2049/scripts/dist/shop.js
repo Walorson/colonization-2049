@@ -19,19 +19,23 @@ class ShopItem {
         this.cost.oxygen = building.cost.oxygen;
         this.cost.food = building.cost.food;
         this.cost.resource = building.cost.resource;
+        this.maxUpgradeLevel = building.maxUpgradeLevel;
         const fullName = this.name.camelCaseSpace();
         const shop = document.getElementById("shop");
         shop.insertAdjacentHTML("beforeend", `
         <div class="shopItem" id="${this.id}">
-            <div class="shopImg"><div class="${this.name}"><img src="colonization2049/img/${this.name}.svg" class="svg"></div></div>
-            <div class="shopName">${fullName}</div>
-            <div class="shopCost">${this.cost.oxygen}x ${this.cost.food}x ${this.cost.resource}x</div>
+            <div class="shopBuyable" id="buyable${this.id}">
+                <div class="shopImg"><div class="${this.name}"><img src="colonization2049/img/${this.name}.svg" class="svg"></div></div>
+                <div class="shopName">${fullName}</div>
+                <div class="shopCost">${this.cost.oxygen}x ${this.cost.food}x ${this.cost.resource}x</div>
+            </div>
+            <div class="shopUpgrade"><img src="colonization2049/img/Upgrade.svg"></div>
         </div>
         `);
         this.init();
     }
     init() {
-        this.div = document.getElementById(this.id);
+        this.div = document.getElementById("buyable" + this.id);
         this.div.onmousedown = () => {
             if (this.div.classList.contains("disabled"))
                 return;
@@ -63,3 +67,4 @@ shopItems.push(new ShopItem(new Base));
 shopItems.push(new ShopItem(new OxygenStation));
 shopItems.push(new ShopItem(new FarmStation));
 shopItems.push(new ShopItem(new MineStation));
+shopItems.push(new ShopItem(new Laboratory));

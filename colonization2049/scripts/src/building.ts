@@ -5,6 +5,7 @@ abstract class Building {
     cost: Record<ResourceKeys, number>;
     row: number;
     index: number;
+    maxUpgradeLevel: number;
                                                 //@ts-ignore
     conditionToBuild(row: number, index: number): boolean 
     { 
@@ -95,6 +96,7 @@ abstract class Station extends Building {
     constructor() {
         super();
         this.name = 'Station';
+        this.maxUpgradeLevel = 1;
     }
     giveResource(player: Player) { 
         /* give 1 source */ 
@@ -159,6 +161,13 @@ class Laboratory extends Building {
         super();
         this.name = 'Laboratory';
         this.currencyRate = 3;
+        this.cost = {
+            "oxygen": 0,
+            "food": 4,
+            "resource": 2,
+            "road": 0
+        };
+        this.maxUpgradeLevel = 3;
     }
 }
 

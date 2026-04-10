@@ -3,7 +3,7 @@
     top: 0; left: 0;
     z-index: 50;
 }
-.Base, .OxygenStation, .FarmStation, .MineStation {
+.Base, .OxygenStation, .FarmStation, .MineStation, .Laboratory {
     --star-color: white;
     height: 35px;
     width: 35px;
@@ -14,6 +14,8 @@
     transform: translate(-50%,-50%);
     position: absolute;
 }
+.Laboratory img { filter: invert(100%); }
+.Laboratory { background-color: rgb(156, 70, 27); }
 .svg {
     height: 27px !important;
     width: 27px !important;

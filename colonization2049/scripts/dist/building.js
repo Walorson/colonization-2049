@@ -79,6 +79,7 @@ class Station extends Building {
     constructor() {
         super();
         this.name = 'Station';
+        this.maxUpgradeLevel = 1;
     }
     giveResource(player) {
         /* give 1 source */
@@ -131,6 +132,20 @@ class MineStation extends Station {
     giveResource(player) {
         player.resource++;
         super.giveResource(player);
+    }
+}
+class Laboratory extends Building {
+    constructor() {
+        super();
+        this.name = 'Laboratory';
+        this.currencyRate = 3;
+        this.cost = {
+            "oxygen": 0,
+            "food": 4,
+            "resource": 2,
+            "road": 0
+        };
+        this.maxUpgradeLevel = 3;
     }
 }
 function hidePlacementPossibilities() {

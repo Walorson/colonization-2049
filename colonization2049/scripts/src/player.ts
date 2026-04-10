@@ -21,6 +21,7 @@ class Player {
     road: number;
     buildings: Building[];
     baseCount: number;
+    currencyRate: number;
 
     constructor() {
         activePlayer = this;
@@ -32,6 +33,7 @@ class Player {
         this.road = 0;
         this.buildings = [];
         this.baseCount = 1;
+        this.currencyRate = 4;
 
         pointsMap[0][0].setBuilding(new Base, true);
         pointsMap[0][1].setBuilding(new OxygenStation, true);
@@ -75,6 +77,10 @@ class Player {
 
         if(building instanceof Base)
             this.baseCount++;
+        else if(building instanceof Laboratory)
+        {
+            this.currencyRate = building.currencyRate;
+        }
 
         this.updateResources();
     }
