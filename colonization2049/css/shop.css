@@ -44,9 +44,8 @@
 }
 .shopUpgrade {
     background-color: rgb(231, 93, 25);
-    width: 20px;
+    width: 30px;
     border-radius: 5px;
-    position: absolute;
     right: 0;
     text-align: center;
     padding: 10px 0;
@@ -59,4 +58,31 @@
 }
 .shopUpgrade:hover {
     filter: brightness(120%);
+}
+
+.shopUpgrade-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  top: 46px;
+  left: 50%;
+  background: #1f2937;
+  color: #f3f4f6;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+  border: 1px solid #f97316;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-out;
+  z-index: 5;
+}
+
+.shopUpgrade-wrapper:hover .tooltip {
+  opacity: 1;
 }

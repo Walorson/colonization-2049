@@ -29,7 +29,10 @@ class ShopItem {
                 <div class="shopName">${fullName}</div>
                 <div class="shopCost">${this.cost.oxygen}x ${this.cost.food}x ${this.cost.resource}x</div>
             </div>
-            <div class="shopUpgrade"><img src="colonization2049/img/Upgrade.svg"></div>
+            <div class="shopUpgrade-wrapper">
+                <button class="shopUpgrade"><img src="colonization2049/img/Upgrade.svg"></button>
+                <div class="tooltip">Kurs wymiany <i>[4] → [3]</i></div>
+            </div>
         </div>
         `);
         this.init();
