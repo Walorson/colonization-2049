@@ -8,42 +8,31 @@ String.prototype.camelCaseSpace = function () {
 };
 class ShopItem {
     constructor(building = new Base) {
-        this.cost = {
-            oxygen: 3,
-            food: 3,
-            resource: 3,
-            road: 0
-        };
         this.id = 'shopItem' + shopItems.length;
-        this.name = building.name;
-        this.cost.oxygen = building.cost.oxygen;
-        this.cost.food = building.cost.food;
-        this.cost.resource = building.cost.resource;
-        this.maxUpgradeLevel = building.maxUpgradeLevel;
-        const fullName = this.name.camelCaseSpace();
+        this.building = building;
+        const fullName = this.building.name.camelCaseSpace();
         const shop = document.getElementById("shop");
         shop.insertAdjacentHTML("beforeend", `
         <div class="shopItem" id="${this.id}">
             <div class="shopBuyable" id="buyable${this.id}">
-                <div class="shopImg"><div class="${this.name}"><img src="colonization2049/img/${this.name}.svg" class="svg"></div></div>
+                <div class="shopImg"><div class="${this.building.name}"><img src="colonization2049/img/${this.building.name}.svg" class="svg"></div></div>
                 <div class="shopName">${fullName}</div>
-                <div class="shopCost">${this.cost.oxygen}x ${this.cost.food}x ${this.cost.resource}x</div>
+                <div class="shopCost">${this.building.cost.oxygen}x ${this.building.cost.food}x ${this.building.cost.resource}x</div>
             </div>
-            <div class="shopUpgrade-wrapper">
-                <button class="shopUpgrade"><img src="colonization2049/img/Upgrade.svg"></button>
-                <div class="tooltip">Kurs wymiany <i>[4] → [3]</i></div>
-            </div>
+            <div class="shopUpgrade-wrapper" id="shop-upgrade${this.id}"></div>
         </div>
         `);
         this.init();
+        this.updateUpgradeState();
     }
     init() {
         this.div = document.getElementById("buyable" + this.id);
+        this.shopUpgradeDiv = document.getElementById(`shop-upgrade${this.id}`);
         this.div.onmousedown = () => {
             if (this.div.classList.contains("disabled"))
                 return;
-            document.querySelector('.map').insertAdjacentHTML("beforeend", `<div class="${this.name}" id="drag"><img src="colonization2049/img/${this.name}.svg" class="svg"></div>`);
-            whatIsDragging = eval(`new ${this.name}()`);
+            document.querySelector('.map').insertAdjacentHTML("beforeend", `<div class="${this.building.name}" id="drag"><img src="colonization2049/img/${this.building.name}.svg" class="svg"></div>`);
+            whatIsDragging = this.building;
             whatIsDragging.showPlacementPossibilities(activePlayer);
             const el = document.getElementById('drag');
             document.onmousemove = (e) => {
@@ -58,12 +47,26 @@ class ShopItem {
         };
     }
     updateAvailability(player) {
-        if (player.oxygen < this.cost.oxygen || player.food < this.cost.food || player.resource < this.cost.resource) {
+        if (player.oxygen < this.building.cost.oxygen || player.food < this.building.cost.food || player.resource < this.building.cost.resource) {
             if (this.div.classList.contains("disabled") == false)
                 this.div.classList.add("disabled");
         }
         else if (this.div.classList.contains("disabled") == true)
             this.div.classList.remove("disabled");
+    }
+    updateUpgradeState() {
+        if (this.building.upgradeLevel < this.building.maxUpgradeLevel) {
+            this.shopUpgradeDiv.innerHTML = `<button class="shopUpgrade"><img src="colonization2049/img/Upgrade.svg"></button>
+                <div class="tooltip" id="upgrade-hint${this.id}">${this.building.upgradeHint}</i></div>`;
+            this.shopUpgradeDiv.onclick = () => {
+                this.building.upgrade();
+                this.updateUpgradeState();
+            };
+        }
+        else {
+            this.shopUpgradeDiv.innerHTML = `<button class="shopUpgrade inactive"><img src="colonization2049/img/Cross2.svg"></button>`;
+            this.shopUpgradeDiv.onclick = () => { };
+        }
     }
 }
 shopItems.push(new ShopItem(new Base));

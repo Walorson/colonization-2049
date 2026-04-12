@@ -15,7 +15,7 @@ class Player {
         this.road = 0;
         this.buildings = [];
         this.baseCount = 1;
-        this.currencyRate = 4;
+        this.exchangeRate = 4;
         pointsMap[0][0].setBuilding(new Base, true);
         pointsMap[0][1].setBuilding(new OxygenStation, true);
         pointsMap[0][23].setBuilding(new FarmStation, true);
@@ -50,7 +50,7 @@ class Player {
         if (building instanceof Base)
             this.baseCount++;
         else if (building instanceof Laboratory) {
-            this.currencyRate = building.currencyRate;
+            this.exchangeRate = building.exchangeRate;
         }
         this.updateResources();
     }

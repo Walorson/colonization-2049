@@ -1,4 +1,7 @@
 class Building {
+    constructor() {
+        this.upgradeLevel = 1;
+    }
     //@ts-ignore
     conditionToBuild(row, index) {
         if (pointsMap[row][val(index - 1)].building instanceof Base || pointsMap[row][val(index + 1)].building instanceof Base) {
@@ -37,6 +40,11 @@ class Building {
                 pointsMap[building.row][val(building.index + 1)].div.classList.add("visible");
             }
         });
+    }
+    upgrade() {
+        if (this.upgradeLevel >= this.maxUpgradeLevel)
+            return;
+        this.upgradeLevel++;
     }
 }
 class Base extends Building {
@@ -138,7 +146,7 @@ class Laboratory extends Building {
     constructor() {
         super();
         this.name = 'Laboratory';
-        this.currencyRate = 3;
+        this.exchangeRate = 3;
         this.cost = {
             "oxygen": 0,
             "food": 4,
@@ -146,6 +154,12 @@ class Laboratory extends Building {
             "road": 0
         };
         this.maxUpgradeLevel = 3;
+        this.upgradeLevel = 1;
+        this.upgradeHint = "Exchange Rate [4] -> [3]";
+    }
+    upgrade() {
+        super.upgrade();
+        activePlayer.exchangeRate--;
     }
 }
 function hidePlacementPossibilities() {

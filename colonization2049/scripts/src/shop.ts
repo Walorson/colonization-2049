@@ -13,53 +13,42 @@ String.prototype.camelCaseSpace = function(this: string): string {
 
 class ShopItem {
     id: string;
-    name: string;
     div: HTMLElement;
-    maxUpgradeLevel: number;
-    cost: Record<ResourceKeys, number> = {
-        oxygen: 3,
-        food: 3,
-        resource: 3,
-        road: 0
-    }
+    shopUpgradeDiv: HTMLElement;
+    building: Building;
 
     constructor(building: Building = new Base) {
         this.id = 'shopItem'+shopItems.length;
-        this.name = building.name;
-        this.cost.oxygen = building.cost.oxygen;
-        this.cost.food = building.cost.food;
-        this.cost.resource = building.cost.resource;
-        this.maxUpgradeLevel = building.maxUpgradeLevel;
+        this.building = building;
 
-        const fullName: string = this.name.camelCaseSpace();
+        const fullName: string = this.building.name.camelCaseSpace();
 
         const shop: HTMLElement = document.getElementById("shop")!;
         shop.insertAdjacentHTML("beforeend", `
         <div class="shopItem" id="${this.id}">
             <div class="shopBuyable" id="buyable${this.id}">
-                <div class="shopImg"><div class="${this.name}"><img src="colonization2049/img/${this.name}.svg" class="svg"></div></div>
+                <div class="shopImg"><div class="${this.building.name}"><img src="colonization2049/img/${this.building.name}.svg" class="svg"></div></div>
                 <div class="shopName">${fullName}</div>
-                <div class="shopCost">${this.cost.oxygen}x ${this.cost.food}x ${this.cost.resource}x</div>
+                <div class="shopCost">${this.building.cost.oxygen}x ${this.building.cost.food}x ${this.building.cost.resource}x</div>
             </div>
-            <div class="shopUpgrade-wrapper">
-                <button class="shopUpgrade"><img src="colonization2049/img/Upgrade.svg"></button>
-                <div class="tooltip">Kurs wymiany <i>[4] → [3]</i></div>
-            </div>
+            <div class="shopUpgrade-wrapper" id="shop-upgrade${this.id}"></div>
         </div>
         `);
 
         this.init();
+        this.updateUpgradeState();
     }
 
     init(): void {
-        this.div = document.getElementById("buyable"+this.id) as HTMLElement;
+        this.div = document.getElementById("buyable"+this.id)!;
+        this.shopUpgradeDiv = document.getElementById(`shop-upgrade${this.id}`)!;
         this.div.onmousedown = () => {
             if(this.div.classList.contains("disabled"))
                 return;
 
-            document.querySelector('.map')!.insertAdjacentHTML("beforeend", `<div class="${this.name}" id="drag"><img src="colonization2049/img/${this.name}.svg" class="svg"></div>`);
+            document.querySelector('.map')!.insertAdjacentHTML("beforeend", `<div class="${this.building.name}" id="drag"><img src="colonization2049/img/${this.building.name}.svg" class="svg"></div>`);
 
-            whatIsDragging = eval(`new ${this.name}()`);
+            whatIsDragging = this.building;
             whatIsDragging!.showPlacementPossibilities(activePlayer);
             const el: HTMLElement = document.getElementById('drag')!;
 
@@ -80,13 +69,33 @@ class ShopItem {
     }
 
     updateAvailability(player: Player): void {
-        if(player.oxygen < this.cost.oxygen || player.food < this.cost.food || player.resource < this.cost.resource)
+        if(player.oxygen < this.building.cost.oxygen || player.food < this.building.cost.food || player.resource < this.building.cost.resource)
         {
             if(this.div.classList.contains("disabled") == false)
                 this.div.classList.add("disabled");
         }
         else if(this.div.classList.contains("disabled") == true)
             this.div.classList.remove("disabled");
+    }
+
+    updateUpgradeState(): void
+    {
+        if(this.building.upgradeLevel < this.building.maxUpgradeLevel)
+        {
+            this.shopUpgradeDiv.innerHTML = `<button class="shopUpgrade"><img src="colonization2049/img/Upgrade.svg"></button>
+                <div class="tooltip" id="upgrade-hint${this.id}">${this.building.upgradeHint}</i></div>`;
+            
+            this.shopUpgradeDiv.onclick = (): void => {
+                this.building.upgrade();
+                this.updateUpgradeState();
+            }
+        }
+        else 
+        {
+            this.shopUpgradeDiv.innerHTML = `<button class="shopUpgrade inactive"><img src="colonization2049/img/Cross2.svg"></button>`;
+
+            this.shopUpgradeDiv.onclick = (): void => {};
+        }
     }
 }
 

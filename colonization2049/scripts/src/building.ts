@@ -6,6 +6,8 @@ abstract class Building {
     row: number;
     index: number;
     maxUpgradeLevel: number;
+    upgradeHint: string;
+    upgradeLevel: number = 1;
                                                 //@ts-ignore
     conditionToBuild(row: number, index: number): boolean 
     { 
@@ -51,6 +53,15 @@ abstract class Building {
             }
         });
     }
+
+    upgrade(): void {
+        if(this.upgradeLevel >= this.maxUpgradeLevel)
+            return;
+
+        this.upgradeLevel++;
+    }
+
+
 }
 class Base extends Building {
     constructor() {
@@ -155,12 +166,12 @@ class MineStation extends Station {
 }
 
 class Laboratory extends Building {
-    currencyRate: number;
+    exchangeRate: number;
 
     constructor() {
         super();
         this.name = 'Laboratory';
-        this.currencyRate = 3;
+        this.exchangeRate = 3;
         this.cost = {
             "oxygen": 0,
             "food": 4,
@@ -168,6 +179,13 @@ class Laboratory extends Building {
             "road": 0
         };
         this.maxUpgradeLevel = 3;
+        this.upgradeLevel = 1;
+        this.upgradeHint = "Exchange Rate [4] -> [3]";
+    }
+
+    upgrade(): void {
+        super.upgrade();
+        activePlayer.exchangeRate--;
     }
 }
 

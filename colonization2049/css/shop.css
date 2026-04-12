@@ -86,3 +86,8 @@
 .shopUpgrade-wrapper:hover .tooltip {
   opacity: 1;
 }
+
+.inactive, .inactive:hover {
+    filter: grayscale(100%);
+    cursor: default;
+}
