@@ -58,6 +58,7 @@ abstract class Building {
         if(this.upgradeLevel >= this.maxUpgradeLevel)
             return;
 
+        activePlayer.buyUpgrade(this);        
         this.upgradeLevel++;
     }
 

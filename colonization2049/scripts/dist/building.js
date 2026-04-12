@@ -44,6 +44,7 @@ class Building {
     upgrade() {
         if (this.upgradeLevel >= this.maxUpgradeLevel)
             return;
+        activePlayer.buyUpgrade(this);
         this.upgradeLevel++;
     }
 }

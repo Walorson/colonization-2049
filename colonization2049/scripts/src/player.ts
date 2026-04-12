@@ -84,6 +84,16 @@ class Player {
 
         this.updateResources();
     }
+
+    buyUpgrade(building: Building)
+    {
+        this.oxygen -= building.cost.oxygen;
+        this.food -= building.cost.food;
+        this.resource -= building.cost.resource;
+        this.road -= building.cost.road;
+
+        this.updateResources();
+    }
 }
 
 players.push(new Player());
