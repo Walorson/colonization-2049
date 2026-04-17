@@ -18,6 +18,7 @@
     <script src="colonization2049/scripts/dist/productionPhase.js" defer></script>
     <script src="colonization2049/scripts/dist/discoveryPhase.js" defer></script>
     <script src="colonization2049/scripts/dist/game.js" defer></script>
+    <script src="colonization2049/scripts/dist/exchange.js" defer></script>
 </head>
 <body>
 
@@ -108,6 +109,68 @@
             </tr>
         </table>
   </div>
+
+  <div id="exchange-overlay">
+    <div id="exchange-window">
+
+        <h2 class="exchange-title">Resource Exchange</h2>
+
+        <div class="exchange-content">
+
+        <!-- LEWA STRONA -->
+        <div class="exchange-column">
+            <div class="resource-grid" id="give-grid">
+            <div class="resource-item" data-type="oxygen">
+                <img src="colonization2049/img/oxygen.jpg" alt="" class="resource-img">
+                <span class="resource-count">4</span>
+            </div>
+            <div class="resource-item" data-type="food">
+                <img src="colonization2049/img/food.jpg" alt="" class="resource-img">
+                <span class="resource-count">4</span>
+            </div>
+            <div class="resource-item" data-type="resource">
+                <img src="colonization2049/img/resource.jpg" alt="" class="resource-img">
+                <span class="resource-count">4</span>
+            </div>
+            </div>
+        </div>
+
+        <!-- STRZAŁKA -->
+        <div class="exchange-arrow">→</div>
+
+        <!-- PRAWA STRONA -->
+        <div class="exchange-column">
+            <div class="resource-grid" id="receive-grid">
+            <div class="resource-item" data-type="oxygen">
+                <img src="colonization2049/img/oxygen.jpg" alt="" class="resource-img">
+                <span class="resource-count">1</span>
+            </div>
+            <div class="resource-item" data-type="food">
+                <img src="colonization2049/img/food.jpg" alt="" class="resource-img">
+                <span class="resource-count">1</span>
+            </div>
+            <div class="resource-item" data-type="resource">
+                <img src="colonization2049/img/resource.jpg" alt="" class="resource-img">
+                <span class="resource-count">1</span>
+            </div>
+            <div class="resource-item" data-type="road">
+                <img src="colonization2049/img/road.jpg" alt="" class="resource-img">
+                <span class="resource-count">1</span>
+            </div>
+            </div>
+        </div>
+
+        </div>
+
+        <!-- PRZYCISKI -->
+        <div class="exchange-buttons">
+        <button id="exchange-btn" disabled>Exchange</button>
+        <button id="cancel-btn">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
 
     <div class="map">     
         <img src="colonization2049/img/map.png">

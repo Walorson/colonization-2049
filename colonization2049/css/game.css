@@ -3,6 +3,7 @@
 @import url('resources.css');
 @import url('window.css');
 @import url('dice.css');
+@import url('exchange-windows.css');
 
 @font-face {
     font-family: future-mood;
