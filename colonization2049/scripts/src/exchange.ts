@@ -37,5 +37,9 @@ exchangeWindow.exchangeBtn.addEventListener("click", () => {
     if(activePlayer.resources[selectedGive!] >= activePlayer.exchangeRate)
     {
         activePlayer.resources[selectedGive!] -= activePlayer.exchangeRate;
+        activePlayer.resources[selectedReceive!] += 1;
+        alert("Exchange has been ended successful");
+
+        activePlayer.updateResources();
     }
 });
