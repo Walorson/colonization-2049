@@ -19,6 +19,7 @@
     <script src="colonization2049/scripts/dist/discoveryPhase.js" defer></script>
     <script src="colonization2049/scripts/dist/game.js" defer></script>
     <script src="colonization2049/scripts/dist/exchange.js" defer></script>
+    <script src="colonization2049/scripts/dist/mission.js" defer></script>
     <script src="colonization2049/scripts/dist/cornerTabs.js" defer></script>
 </head>
 <body>
@@ -111,7 +112,7 @@
         </table>
   </div>
 
-  <div id="exchange-overlay">
+  <div id="exchange-overlay" class="overlay">
     <div id="exchange-window">
 
         <h2 class="exchange-title">Resource Exchange</h2>
@@ -169,20 +170,57 @@
         <button id="cancel-btn">Cancel</button>
         </div>
 
+        </div>
     </div>
-</div>
 
     <div class="corner-tabs">
-        <div class="tab">
-            <span class="tab-icon">⚙️</span>
-        </div>
-        <div class="tab" id="tab-exchange">
-            <span class="tab-icon">📦</span>
-        </div>
-        <div class="tab">
+        <div class="tab" id="tab-mission">
             <span class="tab-icon">📜</span>
         </div>
+        <div class="tab" id="tab-exchange">
+            <span class="tab-icon">💱</span>
+        </div>
     </div>
+
+    <div id="mission-overlay" class="overlay">
+  <div id="mission-window">
+
+    <h2 class="mission-title">Choose the Mission</h2>
+
+    <div class="mission-options">
+
+      <!-- MISJA POKOJOWA -->
+      <div class="mission-btn" data-mission="peace">
+        <div class="mission-img"></div>
+        <div class="mission-label">Peace Mission</div>
+
+        <div class="mission-cost">
+          <div class="cost-item">🧱 3</div>
+          <div class="cost-item">🍎 0</div>
+          <div class="cost-item">💨 1</div>
+        </div>
+      </div>
+
+      <!-- MISJA ZACZEPNĄ -->
+      <div class="mission-btn" data-mission="attack">
+        <div class="mission-img"></div>
+        <div class="mission-label">Offensive Mission</div>
+
+        <div class="mission-cost">
+          <div class="cost-item">🧱 3</div>
+          <div class="cost-item">🍎 0</div>
+          <div class="cost-item">💨 1</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mission-buttons">
+      <button id="mission-cancel">Cancel</button>
+    </div>
+
+  </div>
+</div>
 
 
     <div class="map">     

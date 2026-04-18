@@ -1,0 +1,98 @@
+/* OKNO */
+#mission-window {
+  background: #11141b;
+  padding: 24px 30px;
+  border-radius: 12px;
+  width: 520px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.7);
+  border: 1px solid #f97316;
+}
+
+.mission-title {
+  text-align: center;
+  color: #f3f4f6;
+  margin-bottom: 20px;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+/* OPCJE MISJI */
+.mission-options {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mission-btn {
+  position: relative;
+  height: 120px;
+  background: #1f2937;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: 0.15s;
+}
+
+.mission-btn:hover {
+  border-color: #f97316;
+  box-shadow: 0 0 15px rgba(249,115,22,0.6);
+  transform: translateY(-3px);
+}
+
+.mission-img {
+  position: absolute;
+  inset: 0;
+  background: #374151; /* placeholder */
+  opacity: 0.35;
+}
+
+.mission-label {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #f3f4f6;
+  text-shadow: 0 0 6px rgba(0,0,0,0.8);
+}
+
+/* KOSZT */
+.mission-cost {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.cost-item {
+  background: rgba(0,0,0,0.55);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  border: 1px solid #f97316;
+  color: #f3f4f6;
+}
+
+/* PRZYCISKI NA DOLE */
+.mission-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+#mission-cancel {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: #1f2937;
+  color: #e5e7eb;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+#mission-cancel:hover {
+  background: #374151;
+}
