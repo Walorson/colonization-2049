@@ -15,10 +15,7 @@ const resourcesPanel = {
 class Player {
     id: number;
     color: string;
-    oxygen: number;
-    food: number;
-    resource: number;
-    road: number;
+    resources: Record<ResourceKeys, number>;
     buildings: Building[];
     baseCount: number;
     exchangeRate: number;
@@ -27,10 +24,12 @@ class Player {
         activePlayer = this;
         this.id = players.length;
         this.color = "orange";
-        this.oxygen = 50;
-        this.food = 50;
-        this.resource = 28;
-        this.road = 0;
+        this.resources = {
+            "oxygen": 50,
+            "food": 50,
+            "resource": 28,
+            "road": 0
+        }
         this.buildings = [];
         this.baseCount = 1;
         this.exchangeRate = 4;
@@ -54,10 +53,10 @@ class Player {
 
     updateResources()
     {
-        resourcesPanel.oxygen.textContent = String(this.oxygen);
-        resourcesPanel.food.textContent = String(this.food);
-        resourcesPanel.resource.textContent = String(this.resource);
-        resourcesPanel.road.textContent = String(this.road);
+        resourcesPanel.oxygen.textContent = String(this.resources.oxygen);
+        resourcesPanel.food.textContent = String(this.resources.food);
+        resourcesPanel.resource.textContent = String(this.resources.resource);
+        resourcesPanel.road.textContent = String(this.resources.road);
 
         if(shopItems.length > 0)
         {
@@ -70,10 +69,10 @@ class Player {
     buyBuilding(building: Building)
     {
         this.buildings.push(building);
-        this.oxygen -= building.cost.oxygen;
-        this.food -= building.cost.food;
-        this.resource -= building.cost.resource;
-        this.road -= building.cost.road;
+        this.resources.oxygen -= building.cost.oxygen;
+        this.resources.food -= building.cost.food;
+        this.resources.resource -= building.cost.resource;
+        this.resources.road -= building.cost.road;
 
         if(building instanceof Base)
             this.baseCount++;
@@ -87,13 +86,35 @@ class Player {
 
     buyUpgrade(building: Building)
     {
-        this.oxygen -= building.cost.oxygen;
-        this.food -= building.cost.food;
-        this.resource -= building.cost.resource;
-        this.road -= building.cost.road;
+        this.resources.oxygen -= building.cost.oxygen;
+        this.resources.food -= building.cost.food;
+        this.resources.resource -= building.cost.resource;
+        this.resources.road -= building.cost.road;
 
         this.updateResources();
     }
+
+    /*public getResource(name: ResourceKeys)
+    {
+        switch(name)
+        {
+            case "oxygen": return this.oxygen;
+            case "food": return this.food;
+            case "resource": return this.resource;
+            case "road": return this.road;
+        }
+    }
+
+    public setResource(name: ResourceKeys, value: number)
+    {
+        switch(name)
+        {
+            case "oxygen": this.oxygen = value; break;
+            case "food": this.food = value; break;
+            case "resource": this.resource = value; break;
+            case "road": this.road - value; break;
+        }
+    }*/
 }
 
 players.push(new Player());
@@ -103,9 +124,9 @@ function giveReward(to: Player, resource: ResourceKeys): void
 {
     switch(resource)
     {
-        case "oxygen": to.oxygen++; break;
-        case "food": to.food++; break;
-        case "resource": to.resource++; break;
-        case "road": to.road++; break;
+        case "oxygen": to.resources.oxygen++; break;
+        case "food": to.resources.food++; break;
+        case "resource": to.resources.resource++; break;
+        case "road": to.resources.road++; break;
     }
 }

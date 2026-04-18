@@ -4,6 +4,7 @@
 @import url('window.css');
 @import url('dice.css');
 @import url('exchange-windows.css');
+@import url('corner-tabs.css');
 
 @font-face {
     font-family: future-mood;

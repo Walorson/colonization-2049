@@ -69,7 +69,7 @@ class ShopItem {
     }
 
     updateAvailability(player: Player): void {
-        if(player.oxygen < this.building.cost.oxygen || player.food < this.building.cost.food || player.resource < this.building.cost.resource)
+        if(player.resources.oxygen < this.building.cost.oxygen || player.resources.food < this.building.cost.food || player.resources.resource < this.building.cost.resource)
         {
             if(this.div.classList.contains("disabled") == false)
                 this.div.classList.add("disabled");

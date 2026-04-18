@@ -12,7 +12,7 @@ document.querySelectorAll("#give-grid .resource-item").forEach((item) => {
     item.addEventListener("click", () => {
         document.querySelectorAll("#give-grid .resource-item").forEach(i => i.classList.remove("selected"));
         item.classList.add("selected");
-        selectedGive = String(item.dataset.type);
+        selectedGive = item.dataset.type;
         updateButton();
     });
 });
@@ -20,13 +20,15 @@ document.querySelectorAll("#receive-grid .resource-item").forEach((item) => {
     item.addEventListener("click", () => {
         document.querySelectorAll("#receive-grid .resource-item").forEach(i => i.classList.remove("selected"));
         item.classList.add("selected");
-        selectedReceive = String(item.dataset.type);
+        selectedReceive = item.dataset.type;
         updateButton();
     });
 });
 exchangeWindow.cancelBtn.addEventListener("click", () => {
-    exchangeWindow.overlay.style.display = "none";
+    exchangeWindow.overlay.hideWithAnimation(200);
 });
 exchangeWindow.exchangeBtn.addEventListener("click", () => {
-    alert("Wymieniono: " + selectedGive + " → " + selectedReceive);
+    if (activePlayer.resources[selectedGive] >= activePlayer.exchangeRate) {
+        activePlayer.resources[selectedGive] -= activePlayer.exchangeRate;
+    }
 });

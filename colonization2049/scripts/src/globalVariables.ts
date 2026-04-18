@@ -13,7 +13,7 @@ let whatIsDragging: Building | null = null;
 interface HTMLElement
 {
     hideWithAnimation(duration: number): void;
-    showWithAnimation(duration: number): void;
+    showWithAnimation(duration: number, display?: string): void;
 }
 
 HTMLElement.prototype.hideWithAnimation = function(duration: number): void
@@ -24,9 +24,9 @@ HTMLElement.prototype.hideWithAnimation = function(duration: number): void
     }, duration);
 }
 
-HTMLElement.prototype.showWithAnimation = function(duration: number): void
+HTMLElement.prototype.showWithAnimation = function(duration: number, display: string = "block"): void
 {
-    this.style.display = 'block';
+    this.style.display = display;
     setTimeout(() => {
         this.style.opacity = '1';
     }, 1);

@@ -107,7 +107,7 @@ class OxygenStation extends Station {
         };
     }
     giveResource(player) {
-        player.oxygen++;
+        player.resources.oxygen++;
         super.giveResource(player);
     }
 }
@@ -123,7 +123,7 @@ class FarmStation extends Station {
         };
     }
     giveResource(player) {
-        player.food++;
+        player.resources.food++;
         super.giveResource(player);
     }
 }
@@ -139,7 +139,7 @@ class MineStation extends Station {
         };
     }
     giveResource(player) {
-        player.resource++;
+        player.resources.resource++;
         super.giveResource(player);
     }
 }

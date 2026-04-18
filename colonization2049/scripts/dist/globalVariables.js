@@ -14,8 +14,8 @@ HTMLElement.prototype.hideWithAnimation = function (duration) {
         this.style.display = 'none';
     }, duration);
 };
-HTMLElement.prototype.showWithAnimation = function (duration) {
-    this.style.display = 'block';
+HTMLElement.prototype.showWithAnimation = function (duration, display = "block") {
+    this.style.display = display;
     setTimeout(() => {
         this.style.opacity = '1';
     }, 1);
