@@ -24,208 +24,231 @@
 </head>
 <body>
 
-    <div class="dice-overlay" id="diceOverlay">
-        <div class="dice-container">
-            <div class="dice" id="dice">
-            <div class="dice-face front"><img src="./colonization2049/img/OxygenStation.svg" /></div>
-            <div class="dice-face back"><img src="./colonization2049/img/FarmStation.svg" /></div>
-            <div class="dice-face right"><img src="./colonization2049/img/Barrel.svg" /></div>
-            <div class="dice-face left"><img src="./colonization2049/img/Diamond.svg" /></div>
-            <div class="dice-face top"><img src="./colonization2049/img/Thief.svg" /></div>
-            <div class="dice-face bottom"><img src="./colonization2049/img/Cross.svg" /></div>
-            </div>
+<div class="dice-overlay" id="diceOverlay">
+    <div class="dice-container">
+        <div class="dice" id="dice">
+        <div class="dice-face front"><img src="./colonization2049/img/OxygenStation.svg" /></div>
+        <div class="dice-face back"><img src="./colonization2049/img/FarmStation.svg" /></div>
+        <div class="dice-face right"><img src="./colonization2049/img/Barrel.svg" /></div>
+        <div class="dice-face left"><img src="./colonization2049/img/Diamond.svg" /></div>
+        <div class="dice-face top"><img src="./colonization2049/img/Thief.svg" /></div>
+        <div class="dice-face bottom"><img src="./colonization2049/img/Cross.svg" /></div>
         </div>
     </div>
+</div>
 
-    <div id="discovery-window" class="window">
-        <div class="window-header">
-            <h2 class="window-title">Choose your reward</h2>
-        </div>
 
-        <div class="cards-row">
-        <div class="card" data-resource="oxygen"> 
-                <img class="card-image" src="./colonization2049/img/oxygen.jpg" alt="Karta 1" />
-                <div class="card-title">Oxygen</div>
+
+
+<div id="discovery-window" class="window">
+    <div class="window-header">
+        <h2 class="window-title">Choose your reward</h2>
+    </div>
+
+    <div class="cards-row">
+    <div class="card" data-resource="oxygen"> 
+            <img class="card-image" src="./colonization2049/img/oxygen.jpg" alt="Karta 1" />
+            <div class="card-title">Oxygen</div>
+            <div class="card-gloss"></div>
+    </div>
+
+    <div class="card" data-resource="food">
+            <img class="card-image" src="./colonization2049/img/food.jpg" alt="Karta 2" />
+            <div class="card-title">Food</div>
+            <div class="card-gloss"></div>
+    </div>
+
+    <div class="card" data-resource="resource">
+            <img class="card-image" src="./colonization2049/img/resource.jpg" alt="Karta 3" />
+            <div class="card-title">Resource</div>
+            <div class="card-gloss"></div>
+    </div>
+
+    <div class="card" data-resource="road">
+            <img class="card-image" src="./colonization2049/img/road.jpg" alt="Karta 4" />
+            <div class="card-title">Road</div>
+            <div class="card-gloss"></div>
+    </div>
+    </div>
+</div>
+
+
+
+
+<div class="window" id="production-window">
+    <div class="flex">
+        <h2 class="window-title">OXYGEN PRODUCTION</h2>
+
+        <div class="card">
+            <div class="card-inner">
+                <img class="card-image" src="./colonization2049/img/oxygen.jpg" alt="Oxygen Card" />
                 <div class="card-gloss"></div>
-        </div>
-
-        <div class="card" data-resource="food">
-                <img class="card-image" src="./colonization2049/img/food.jpg" alt="Karta 2" />
-                <div class="card-title">Food</div>
-                <div class="card-gloss"></div>
-        </div>
-
-        <div class="card" data-resource="resource">
-                <img class="card-image" src="./colonization2049/img/resource.jpg" alt="Karta 3" />
-                <div class="card-title">Resource</div>
-                <div class="card-gloss"></div>
-        </div>
-
-        <div class="card" data-resource="road">
-                <img class="card-image" src="./colonization2049/img/road.jpg" alt="Karta 4" />
-                <div class="card-title">Road</div>
-                <div class="card-gloss"></div>
-        </div>
-        </div>
-  </div>
-
-  <div class="window" id="production-window">
-        <div class="flex">
-            <h2 class="window-title">OXYGEN PRODUCTION</h2>
-
-            <div class="card">
-                <div class="card-inner">
-                    <img class="card-image" src="./colonization2049/img/oxygen.jpg" alt="Oxygen Card" />
-                    <div class="card-gloss"></div>
-                </div>
-            </div>    
+            </div>
+        </div>    
 
     <p class="window-text">Your stations have produced <strong><span class="resource-count">3</span> <span class="resource-name">oxygens</span></strong></p>
 
     <button class="window-button">OK</button>
     </div>
-  </div>
+</div>
 
-    <div class="shop" id="shop">
-        <div class="shopHeader">💦🚜🛢</div>
-    </div>
 
-   <div class="resources-panel">
-        <p class="resources-title">Resources</p>
-        <table class="resources-table">
-            <tr>
-                <td class="resource-name oxygen">Oxygen</td>
-                <td class="resource-value oxygen" id="resource-oxygen-value">120</td>
-            </tr>
-            <tr>
-                <td class="resource-name food">Food</td>
-                <td class="resource-value food" id="resource-food-value">75</td>
-            </tr>
-            <tr>
-                <td class="resource-name generic-resource">Resource</td>
-                <td class="resource-value generic-resource" id="resource-resource-value">340</td>
-            </tr>
-            <tr>
-                <td class="resource-name road">Road</td>
-                <td class="resource-value road" id="resource-road-value">0</td>
-            </tr>
-        </table>
-  </div>
 
-  <div id="exchange-overlay" class="overlay">
+
+<div class="shop" id="shop">
+    <div class="shopHeader">💦🚜🛢</div>
+</div>
+
+
+
+
+<div class="resources-panel">
+    <p class="resources-title">Resources</p>
+    <table class="resources-table">
+        <tr>
+            <td class="resource-name oxygen">Oxygen</td>
+            <td class="resource-value oxygen" id="resource-oxygen-value">120</td>
+        </tr>
+        <tr>
+            <td class="resource-name food">Food</td>
+            <td class="resource-value food" id="resource-food-value">75</td>
+        </tr>
+        <tr>
+            <td class="resource-name generic-resource">Resource</td>
+            <td class="resource-value generic-resource" id="resource-resource-value">340</td>
+        </tr>
+        <tr>
+            <td class="resource-name road">Road</td>
+            <td class="resource-value road" id="resource-road-value">0</td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+
+<div id="exchange-overlay" class="overlay">
     <div id="exchange-window">
 
         <h2 class="exchange-title">Resource Exchange</h2>
 
         <div class="exchange-content">
 
-        <!-- LEWA STRONA -->
-        <div class="exchange-column">
-            <div class="resource-grid" id="give-grid">
-            <div class="resource-item" data-type="oxygen">
-                <img src="colonization2049/img/oxygen.jpg" alt="" class="resource-img">
-                <span class="resource-count">4</span>
-            </div>
-            <div class="resource-item" data-type="food">
-                <img src="colonization2049/img/food.jpg" alt="" class="resource-img">
-                <span class="resource-count">4</span>
-            </div>
-            <div class="resource-item" data-type="resource">
-                <img src="colonization2049/img/resource.jpg" alt="" class="resource-img">
-                <span class="resource-count">4</span>
-            </div>
-            </div>
-        </div>
+            <div class="exchange-column">
 
-        <!-- STRZAŁKA -->
-        <div class="exchange-arrow">→</div>
+                <div class="resource-grid" id="give-grid">
+                    <div class="resource-item" data-type="oxygen">
+                        <img src="colonization2049/img/oxygen.jpg" alt="" class="resource-img">
+                        <span class="resource-cost">4</span>
+                    </div>
+                    <div class="resource-item" data-type="food">
+                        <img src="colonization2049/img/food.jpg" alt="" class="resource-img">
+                        <span class="resource-cost">4</span>
+                    </div>
+                    <div class="resource-item" data-type="resource">
+                        <img src="colonization2049/img/resource.jpg" alt="" class="resource-img">
+                        <span class="resource-cost">4</span>
+                    </div>
+                </div>
 
-        <!-- PRAWA STRONA -->
-        <div class="exchange-column">
-            <div class="resource-grid" id="receive-grid">
-            <div class="resource-item" data-type="oxygen">
-                <img src="colonization2049/img/oxygen.jpg" alt="" class="resource-img">
-                <span class="resource-count">1</span>
             </div>
-            <div class="resource-item" data-type="food">
-                <img src="colonization2049/img/food.jpg" alt="" class="resource-img">
-                <span class="resource-count">1</span>
-            </div>
-            <div class="resource-item" data-type="resource">
-                <img src="colonization2049/img/resource.jpg" alt="" class="resource-img">
-                <span class="resource-count">1</span>
-            </div>
-            <div class="resource-item" data-type="road">
-                <img src="colonization2049/img/road.jpg" alt="" class="resource-img">
-                <span class="resource-count">1</span>
-            </div>
-            </div>
-        </div>
 
-        </div>
+            <div class="exchange-arrow">→</div>
 
-        <!-- PRZYCISKI -->
-        <div class="exchange-buttons">
-        <button id="exchange-btn" disabled>Exchange</button>
-        <button id="cancel-btn">Cancel</button>
-        </div>
+            <div class="exchange-column">
+
+                <div class="resource-grid" id="receive-grid">
+                    <div class="resource-item" data-type="oxygen">
+                        <img src="colonization2049/img/oxygen.jpg" alt="" class="resource-img">
+                        <span class="resource-cost">1</span>
+                    </div>
+                    <div class="resource-item" data-type="food">
+                        <img src="colonization2049/img/food.jpg" alt="" class="resource-img">
+                        <span class="resource-cost">1</span>
+                    </div>
+                    <div class="resource-item" data-type="resource">
+                        <img src="colonization2049/img/resource.jpg" alt="" class="resource-img">
+                        <span class="resource-cost">1</span>
+                    </div>
+                    <div class="resource-item" data-type="road">
+                        <img src="colonization2049/img/road.jpg" alt="" class="resource-img">
+                        <span class="resource-cost">1</span>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
+
+        <div class="buttons-section">
+            <button id="exchange-btn" disabled class="action-btn">Exchange</button>
+            <button id="cancel-btn" class="cancel-btn">Cancel</button>
+        </div>
+
+        </div>
+</div>
+
+
+
+
+<div class="corner-tabs">
+    <div class="tab" id="tab-mission">
+        <span class="tab-icon">📜</span>
     </div>
-
-    <div class="corner-tabs">
-        <div class="tab" id="tab-mission">
-            <span class="tab-icon">📜</span>
-        </div>
-        <div class="tab" id="tab-exchange">
-            <span class="tab-icon">💱</span>
-        </div>
+    <div class="tab" id="tab-exchange">
+        <span class="tab-icon">💱</span>
     </div>
+</div>
 
-    <div id="mission-overlay" class="overlay">
+
+
+
+<div id="mission-overlay" class="overlay">
   <div id="mission-window">
 
     <h2 class="mission-title">Choose the Mission</h2>
 
     <div class="mission-options">
 
-      <!-- MISJA POKOJOWA -->
-      <div class="mission-btn" data-mission="peace">
-        <div class="mission-img"></div>
-        <div class="mission-label">Peace Mission</div>
+        <!-- MISJA POKOJOWA -->
+        <div class="mission-btn">
+            <div class="mission-img"><img src="colonization2049/img/peaceMission.jpg" alt="Peace Mission"></div>
+            <div class="mission-label">Peace Mission</div>
 
-        <div class="mission-cost">
-          <div class="cost-item">🧱 3</div>
-          <div class="cost-item">🍎 0</div>
-          <div class="cost-item">💨 1</div>
+            <div class="mission-cost">
+            <div class="cost-item">🧱 3</div>
+            <div class="cost-item">🍎 0</div>
+            <div class="cost-item">💨 1</div>
+            </div>
         </div>
-      </div>
 
-      <!-- MISJA ZACZEPNĄ -->
-      <div class="mission-btn" data-mission="attack">
-        <div class="mission-img"></div>
-        <div class="mission-label">Offensive Mission</div>
+        <!-- MISJA ZACZEPNĄ -->
+        <div class="mission-btn">
+            <div class="mission-img"><img src="colonization2049/img/offensiveMission.png" alt="Offensive Mission"></div>
+            <div class="mission-label">Offensive Mission</div>
 
-        <div class="mission-cost">
-          <div class="cost-item">🧱 3</div>
-          <div class="cost-item">🍎 0</div>
-          <div class="cost-item">💨 1</div>
+            <div class="mission-cost">
+            <div class="cost-item">🧱 3</div>
+            <div class="cost-item">🍎 0</div>
+            <div class="cost-item">💨 1</div>
+            </div>
         </div>
-      </div>
 
     </div>
 
-    <div class="mission-buttons">
-      <button id="mission-cancel">Cancel</button>
+    <div class="buttons-section">
+      <button id="mission-cancel" class="cancel-btn">Cancel</button>
     </div>
 
   </div>
 </div>
 
 
-    <div class="map">     
-        <img src="colonization2049/img/map.png">
-    </div>
+<div class="map">     
+    <img src="colonization2049/img/map.png">
+</div>
+
     
 </body>
 </html>

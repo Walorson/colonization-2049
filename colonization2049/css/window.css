@@ -176,3 +176,44 @@
     width: 45%;
     }
 }
+
+.buttons-section {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cancel-btn {
+  background: #1f2937;
+  color: #e5e7eb;
+}
+
+.cancel-btn:hover {
+  background: #374151;
+}
+
+.action-btn,
+.cancel-btn {
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.action-btn {
+  background: #f97316;
+  color: #111;
+  transition: 0.15s;
+}
+
+.action-btn:disabled {
+  background: #4b5563;
+  cursor: not-allowed;
+}
+
+.action-btn:not(:disabled):hover {
+  background: #fb923c;
+}
