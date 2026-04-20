@@ -44,7 +44,6 @@ class Building {
     upgrade() {
         if (this.upgradeLevel >= this.maxUpgradeLevel)
             return;
-        activePlayer.buyUpgrade(this);
         this.upgradeLevel++;
     }
 }
@@ -161,6 +160,13 @@ class Laboratory extends Building {
     upgrade() {
         super.upgrade();
         activePlayer.exchangeRate--;
+        this.updateExchangeCost();
+        activePlayer.buyUpgrade(this);
+    }
+    updateExchangeCost() {
+        document.getElementById("give-grid").querySelectorAll(".resource-cost").forEach((item) => {
+            item.textContent = String(activePlayer.exchangeRate);
+        });
     }
 }
 function hidePlacementPossibilities() {

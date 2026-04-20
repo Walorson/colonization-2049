@@ -25,9 +25,9 @@ class Player {
         this.id = players.length;
         this.color = "orange";
         this.resources = {
-            "oxygen": 50,
-            "food": 50,
-            "resource": 28,
+            "oxygen": 10,
+            "food": 10,
+            "resource": 18,
             "road": 0
         }
         this.buildings = [];
@@ -64,6 +64,13 @@ class Player {
                 shopItem.updateAvailability(this);
             });
         }
+
+        document.getElementById("give-grid").querySelectorAll<HTMLElement>(".resource-item").forEach((item: HTMLElement) => {
+            if(this.resources[item.dataset.type as ResourceKeys] < this.exchangeRate)
+                item.classList.add("disabled");
+            else
+                item.classList.remove("disabled");
+        });
     }
 
     buyBuilding(building: Building)
@@ -93,28 +100,6 @@ class Player {
 
         this.updateResources();
     }
-
-    /*public getResource(name: ResourceKeys)
-    {
-        switch(name)
-        {
-            case "oxygen": return this.oxygen;
-            case "food": return this.food;
-            case "resource": return this.resource;
-            case "road": return this.road;
-        }
-    }
-
-    public setResource(name: ResourceKeys, value: number)
-    {
-        switch(name)
-        {
-            case "oxygen": this.oxygen = value; break;
-            case "food": this.food = value; break;
-            case "resource": this.resource = value; break;
-            case "road": this.road - value; break;
-        }
-    }*/
 }
 
 players.push(new Player());

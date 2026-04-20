@@ -25,6 +25,8 @@ class PlacePoint {
         map.appendChild(point);
     }
     setBuilding(building, force = false, mouseEvent = false) {
+        if (building == null)
+            return;
         if (force == true || building.conditionToBuild(this.getRow(), this.getIndex())) {
             document.getElementById(this.id).classList.replace('placePoint', building.name);
             document.getElementById(this.id).innerHTML = `<img src="colonization2049/img/${building.name}.svg" class="svg">`;

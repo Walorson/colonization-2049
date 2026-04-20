@@ -40,6 +40,8 @@ class PlacePoint {
 
     setBuilding(building: Building, force: boolean = false, mouseEvent: boolean = false): void
     {
+        if(building == null) return;
+
         if(force == true || building.conditionToBuild(this.getRow(), this.getIndex()))
         {
             document.getElementById(this.id)!.classList.replace('placePoint', building.name);

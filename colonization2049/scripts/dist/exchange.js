@@ -10,6 +10,8 @@ function updateButton() {
 }
 document.querySelectorAll("#give-grid .resource-item").forEach((item) => {
     item.addEventListener("click", () => {
+        if (item.classList.contains("disabled"))
+            return;
         document.querySelectorAll("#give-grid .resource-item").forEach(i => i.classList.remove("selected"));
         item.classList.add("selected");
         selectedGive = item.dataset.type;
@@ -18,6 +20,8 @@ document.querySelectorAll("#give-grid .resource-item").forEach((item) => {
 });
 document.querySelectorAll("#receive-grid .resource-item").forEach((item) => {
     item.addEventListener("click", () => {
+        if (item.classList.contains("disabled"))
+            return;
         document.querySelectorAll("#receive-grid .resource-item").forEach(i => i.classList.remove("selected"));
         item.classList.add("selected");
         selectedReceive = item.dataset.type;

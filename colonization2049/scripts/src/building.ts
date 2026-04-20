@@ -58,8 +58,7 @@ abstract class Building {
         if(this.upgradeLevel >= this.maxUpgradeLevel)
             return;
 
-        activePlayer.buyUpgrade(this);        
-        this.upgradeLevel++;
+        this.upgradeLevel++;       
     }
 
 
@@ -187,6 +186,15 @@ class Laboratory extends Building {
     upgrade(): void {
         super.upgrade();
         activePlayer.exchangeRate--;
+
+        this.updateExchangeCost();
+        activePlayer.buyUpgrade(this);
+    }
+
+    updateExchangeCost(): void {
+        document.getElementById("give-grid").querySelectorAll<HTMLElement>(".resource-cost").forEach((item: HTMLElement) => {
+            item.textContent = String(activePlayer.exchangeRate);
+        });
     }
 }
 
