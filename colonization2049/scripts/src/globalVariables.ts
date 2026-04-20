@@ -24,7 +24,7 @@ HTMLElement.prototype.hideWithAnimation = function(duration: number): void
     }, duration);
 }
 
-HTMLElement.prototype.showWithAnimation = function(duration: number, display: string = "block"): void
+HTMLElement.prototype.showWithAnimation = function(duration: number, display: string = "flex"): void
 {
     this.style.display = display;
     setTimeout(() => {

@@ -10,27 +10,19 @@
 }
 
 .window {
-    background: rgba(15, 23, 42, 0.96);
-    border-radius: 18px;
-    padding: 24px 28px 28px;
-    max-width: 720px;
-    width: 90%;
-    color: #e5e7eb;
-    
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    z-index: 1;
-
-    transition: 0.2s opacity linear;
-    opacity: 0;
-    display: none;
+    background: #11141b;
+    padding: 20px 28px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.7);
+    border: 1px solid #f97316;
 }
 
-#production-window
-{
+#production-window > .window {
     width: 380px;
+}
+
+#discovery-window > .window {
+    padding: 40px 48px;
 }
 
 .flex {
