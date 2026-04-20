@@ -1,0 +1,35 @@
+.next-turn-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(231, 93, 25);
+  border: 1px solid #f97316;
+  color: #eee;
+  letter-spacing: 3px;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 14px 26px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 10px rgba(249,115,22,0.4);
+  transition: 0.2s ease;
+  z-index: 5;
+  font-family: future-mood;
+}
+
+.next-turn-btn:hover {
+  box-shadow: 0 0 20px rgba(249,115,22,0.9);
+  transform: translateY(-3px);
+}
+
+.next-turn-btn:hover .next-arrow {
+  margin-left: 12px;
+}
+
+.next-arrow {
+  transition: margin-left 0.2s ease;
+  font-size: 20px;
+}
